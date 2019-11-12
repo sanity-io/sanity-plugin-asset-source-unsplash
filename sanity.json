@@ -5,7 +5,7 @@
   },
   "parts": [
     {
-      "name": "part:sanity-plugin/image-asset-source-unsplash",
+      "name": "part:sanity-plugin-asset-source-unsplash",
       "implements": "part:@sanity/form-builder/input/image/asset-source",
       "path": "index.js"
     }

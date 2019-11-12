@@ -1,6 +1,6 @@
 {
   "name": "sanity-plugin-asset-source-unsplash",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Sanity Studio plugin for using Unsplash to select images from",
   "keywords": [
     "sanity",
@@ -36,7 +36,7 @@
   "scripts": {
     "lint": "tslint  --project tsconfig.json -t codeFrame 'src/**/*.ts' 'test/**/*.ts'",
     "prebuild": "rimraf dist",
-    "build": "tsc --module commonjs && rollup -c rollup.config.ts && npm run postcss:build && typedoc --out docs --target es6 --theme minimal --mode file src && cp ./config.dist.json ./dist",
+    "build": "tsc --module commonjs && rollup -c rollup.config.ts && npm run postcss:build && typedoc --out docs --target es6 --theme minimal --mode file src",
     "watch-tsc": "tsc --watch --module commonjs",
     "watch-css": "postcss src/**/*.css --base src --dir dist/lib --watch",
     "watch-rollup": "rollup -c rollup.config.ts -w",
