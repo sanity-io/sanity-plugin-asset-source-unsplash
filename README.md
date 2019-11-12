@@ -1,5 +1,11 @@
 # Sanity Asset Source: Unsplash
 
+## Installation
+
+`sanity install asset-source-unsplash`
+
+Edit the config file found in `./config/sanity-plugin-asset-source-unsplash.json` with your Unsplash API key.
+
 ## Developing on this module
 
 To simulate using your development version as a real module inside a studio, you can do the following:
