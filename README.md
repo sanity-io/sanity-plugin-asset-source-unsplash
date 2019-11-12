@@ -4,7 +4,9 @@
 
 `sanity install asset-source-unsplash`
 
-Edit the config file found in `./config/sanity-plugin-asset-source-unsplash.json` with your Unsplash API key.
+Edit the config file found in `./config/asset-source-unsplash.json` with your Unsplash API key.
+
+You can create a new API key or find an existing one here: https://unsplash.com/oauth/applications
 
 ## Developing on this module
 
