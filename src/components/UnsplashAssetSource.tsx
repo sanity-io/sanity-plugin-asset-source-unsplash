@@ -39,7 +39,17 @@ export default class UnsplashAssetSource extends React.Component<Props> {
       <div>
         <h2>Missing configuration</h2>
         <p>You must first configure the plugin with your Unsplash API key</p>
-        <p>Edit the <code>./config/asset-source-unsplash.json</code> file in your Sanity Studio folder.</p>
+        <p>
+          Edit the <code>./config/asset-source-unsplash.json</code> file in your Sanity Studio
+          folder.
+        </p>
+        <p>
+          You can obtain an API key by visting{' '}
+          <a href="https://unsplash.com/oauth/applications" rel="noopener noreferrer" target="_blank">
+            this page
+          </a>{' '}
+          and create a new Unsplash application or use the API key for an existing one.
+        </p>
       </div>
     )
   }
@@ -55,7 +65,7 @@ export default class UnsplashAssetSource extends React.Component<Props> {
               onFinishedUploading={this.handleSelect}
             />
           )}
-        {!pluginConfig.accessKey && this.renderConfigWarning()}
+          {!pluginConfig.accessKey && this.renderConfigWarning()}
         </div>
       </Dialog>
     )
