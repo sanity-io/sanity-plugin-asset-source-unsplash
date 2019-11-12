@@ -1,0 +1,54 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "moduleResolution": "node",
+    "target": "es5",
+    "esModuleInterop": true,
+    "module": "es2015",
+    "lib": ["es2015", "es2016", "es2017", "dom"],
+    "strict": true,
+    "sourceMap": true,
+    "declaration": true,
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "declarationDir": "dist/types",
+    "outDir": "dist/lib",
+    "typeRoots": ["node_modules/@types"],
+    "baseUrl": ".",
+    "paths": {
+      "part:@sanity/base/spinner-icon": [
+        "./test/__mocks__/styleMock.js"
+      ],
+      "part:@sanity/components/loading/spinner-style": [
+        "./test/__mocks__/styleMock.js"
+      ],
+      "part:@sanity/components/buttons/default-style": [
+        "./test/__mocks__/styleMock.js"
+      ],
+      "part:@sanity/components/buttons/default": [
+        "./node_modules/@sanity/components/lib/buttons/DefaultButton.js"
+      ],
+      "part:@sanity/components/loading/spinner": [
+        "./node_modules/@sanity/components/lib/loading/Spinner.js"
+      ],
+      "part:@sanity/components/dialogs/fullscreen": [
+        "./node_modules/@sanity/components/lib/dialogs/FullscreenDialog.js"
+      ],
+      "part:@sanity/components/dialogs/fullscreen-style": [
+        "./node_modules/@sanity/components/lib/dialogs/styles/FullscreenDialog.css"
+      ],
+      "part:@sanity/base/close-icon": [
+        "./node_modules/@sanity/base/lib/components/icons/CloseIcon.js"
+      ],
+      "part:@sanity/components/buttons/button-grid": [
+        "./node_modules/@sanity/components/lib/buttons/ButtonGrid.js"
+      ],
+      "config:asset-source-unsplash": [
+        "./config.dist.json"
+      ]
+
+    }
+  },
+  "include": ["src/**/*"]
+}

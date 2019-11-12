@@ -1,0 +1,13 @@
+{
+  "paths": {
+    "source": "./src",
+    "compiled": "./dist/lib"
+  },
+  "parts": [
+    {
+      "name": "part:sanity-plugin/image-asset-source-unsplash",
+      "implements": "part:@sanity/form-builder/input/image/asset-source",
+      "path": "index.js"
+    }
+  ]
+}
