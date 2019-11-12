@@ -1,7 +1,6 @@
 import React from 'react'
 import UnsplashReact, { withDefaultProps } from 'unsplash-react'
 import Dialog from 'part:@sanity/components/dialogs/fullscreen'
-import Spinner from 'part:@sanity/components/loading/spinner'
 import pluginConfig from 'config:asset-source-unsplash'
 import ShallowUploader from './ShallowUploader'
 import { Asset, AssetDocument, UnsplashPhoto } from '../types'
