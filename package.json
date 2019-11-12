@@ -1,6 +1,6 @@
 {
   "name": "sanity-plugin-asset-source-unsplash",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Sanity Studio plugin for using Unsplash to select images from",
   "keywords": [
     "sanity",
@@ -15,7 +15,8 @@
   "typings": "dist/types/sanity-plugin-asset-source-unsplash.d.ts",
   "files": [
     "dist",
-    "sanity.json"
+    "sanity.json",
+    "config.dist.json"
   ],
   "author": "Sanity.io <hello@sanity.io>",
   "repository": {
