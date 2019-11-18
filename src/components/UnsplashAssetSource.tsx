@@ -1,5 +1,5 @@
 import React from 'react'
-import UnsplashReact from 'unsplash-react'
+import UnsplashReact, {withDefaultProps} from 'unsplash-react'
 import Dialog from 'part:@sanity/components/dialogs/fullscreen'
 import pluginConfig from 'config:asset-source-unsplash'
 import APIResultUploader from './APIResultUploader'
@@ -66,7 +66,7 @@ export default class UnsplashAssetSource extends React.Component<Props> {
             <UnsplashReact
               applicationName="Sanity Asset Source Unsplash"
               accessKey={pluginConfig.accessKey}
-              Uploader={APIResultUploader}
+              Uploader={withDefaultProps(APIResultUploader, {})}
               onFinishedUploading={this.handleSelect}
             />
           )}
