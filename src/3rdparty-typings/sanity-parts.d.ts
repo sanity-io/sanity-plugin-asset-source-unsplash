@@ -51,3 +51,8 @@ declare module 'part:@sanity/components/dialogs/fullscreen' {
   }
   export default class FullscreenDialog extends React.Component<Props, any> {}
 }
+
+declare module 'config:asset-source-unsplash' {
+  const shim: any
+  export default shim
+}
