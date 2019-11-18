@@ -1,6 +1,6 @@
 {
   "name": "sanity-plugin-asset-source-unsplash",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Sanity Studio plugin for using Unsplash to select images from",
   "keywords": [
     "sanity",
