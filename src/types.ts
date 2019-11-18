@@ -4,22 +4,41 @@ export type Asset = {
   assetDocumentProps?: {
     originalFileName?: string
     label?: string
-    source?: string
-    sourceId?: string
+    title?: string
+    description?: string
+    source?: {
+      id: string
+      name: string
+      url?: string
+    }
+    creditLine?: string
   }
 }
 
 export type AssetDocument = {
   _id: string
   label?: string
-  source?: string
-  sourceId?: string
+  title?: string
+  description?: string
+  source?: {
+    id: string
+    name: string
+    url?: string
+  }
+  creditLine?: string
   originalFilename?: string
 }
 
 export type UnsplashPhoto = {
-  id: string,
+  id: string
   urls: {
     full: string
+  }
+  user: {
+    name: string
+    username: string
+  }
+  links: {
+    html: string
   }
 }

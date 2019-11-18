@@ -1,8 +1,8 @@
 import React from 'react'
-import UnsplashReact, { withDefaultProps } from 'unsplash-react'
+import UnsplashReact from 'unsplash-react'
 import Dialog from 'part:@sanity/components/dialogs/fullscreen'
 import pluginConfig from 'config:asset-source-unsplash'
-import ShallowUploader from './ShallowUploader'
+import APIResultUploader from './APIResultUploader'
 import { Asset, AssetDocument, UnsplashPhoto } from '../types'
 import styles from './UnsplashAssetSource.css'
 
@@ -23,8 +23,12 @@ export default class UnsplashAssetSource extends React.Component<Props> {
       kind: 'url',
       value: photo.urls.full,
       assetDocumentProps: {
-        source: 'unsplash',
-        sourceId: photo.id
+        source: {
+          name: 'unsplash',
+          id: photo.id,
+          url: photo.links.html
+        },
+        creditLine: `${photo.user.name} by Unsplash`
       }
     }
     this.props.onSelect([asset])
@@ -60,8 +64,9 @@ export default class UnsplashAssetSource extends React.Component<Props> {
         <div className={styles.root}>
           {pluginConfig.accessKey && (
             <UnsplashReact
+              applicationName="Sanity Asset Source Unsplash"
               accessKey={pluginConfig.accessKey}
-              Uploader={withDefaultProps(ShallowUploader, {})}
+              Uploader={APIResultUploader}
               onFinishedUploading={this.handleSelect}
             />
           )}

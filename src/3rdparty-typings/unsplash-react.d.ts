@@ -1,7 +1,8 @@
 declare module 'unsplash-react' {
   interface Props {
-    accessKey?: string,
-    Uploader?: any,
+    accessKey?: string
+    applicationName: string
+    Uploader?: any
     onFinishedUploading?: any
   }
   export default class UnsplashReact extends React.Component<Props, any> {}

@@ -32,6 +32,16 @@ declare module 'part:@sanity/components/loading/spinner' {
   export default class Spinner extends React.Component<Props, any> {}
 }
 
+declare module 'part:@sanity/base/theme/variables-style' {
+  const shim: any
+  export default shim
+}
+
+declare module 'part:@sanity/components/dialogs/fullscreen-style' {
+  const shim: any
+  export default shim
+}
+
 declare module 'part:@sanity/components/dialogs/fullscreen' {
   import * as React from 'react'
   interface Props {
@@ -40,14 +50,4 @@ declare module 'part:@sanity/components/dialogs/fullscreen' {
     isOpen?: boolean
   }
   export default class FullscreenDialog extends React.Component<Props, any> {}
-}
-
-declare module 'part:@sanity/components/dialogs/fullscreen-style' {
-  const shim: any
-  export default shim
-}
-
-declare module 'config:asset-source-unsplash' {
-  const shim: any
-  export default shim
 }
