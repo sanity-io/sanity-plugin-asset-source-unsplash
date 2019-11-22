@@ -48,7 +48,7 @@ export default class UnsplashAssetSource extends React.Component<Props> {
           folder.
         </p>
         <p>
-          You can obtain an API key by visting{' '}
+          You can obtain an API key by visiting{' '}
           <a href="https://unsplash.com/oauth/applications" rel="noopener noreferrer" target="_blank">
             this page
           </a>{' '}
