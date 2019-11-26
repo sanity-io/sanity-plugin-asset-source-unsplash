@@ -1,8 +1,15 @@
-# Sanity Asset Source: Unsplash
+# Sanity Asset Source Plugin: Unsplash
+Seach photos on Unsplash and use them directly inside of your Sanity Studio.
 
 ## Installation
 
 `sanity install asset-source-unsplash`
+
+## Part name
+
+If you need to do cusotomize available asset sources, the plugin part name for this asset source is:
+
+`part:sanity-plugin-asset-source-unsplash/image-asset-source`
 
 ## Developing on this module
 
@@ -195,5 +202,7 @@ When you are done and have published your new version, you can run `npm unlink` 
 ## Futher reading
 
 * https://unsplash.com/documentation
+* https://www.sanity.io/docs/custom-asset-sources
+
 
 
