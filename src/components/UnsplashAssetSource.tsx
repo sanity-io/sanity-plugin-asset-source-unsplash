@@ -1,10 +1,14 @@
 import React from 'react'
-import UnsplashReact, {withDefaultProps} from 'unsplash-react'
+import Gallery from 'react-photo-gallery'
+import { flatten } from 'lodash'
+import { BehaviorSubject, Subscription } from 'rxjs'
 import Dialog from 'part:@sanity/components/dialogs/fullscreen'
-import pluginConfig from 'config:asset-source-unsplash'
-import APIResultUploader from './APIResultUploader'
+import SearchTextField from 'part:@sanity/components/textfields/search'
 import { Asset, AssetDocument, UnsplashPhoto } from '../types'
+import Scroller from './Scroller'
+import Photo from './Photo'
 import styles from './UnsplashAssetSource.css'
+import { search } from '../datastores/unsplash'
 
 type Props = {
   onSelect: (assets: Asset[]) => void
@@ -13,9 +17,48 @@ type Props = {
   selectionType: 'single' | 'multiple'
 }
 
-export default class UnsplashAssetSource extends React.Component<Props> {
+type State = {
+  query: string
+  searchResults: UnsplashPhoto[][]
+  page: number
+  isLoading: boolean
+}
+
+const RESULTS_PER_PAGE = 42
+
+export default class UnsplashAssetSource extends React.Component<Props, State> {
   static defaultProps = {
     selectedAssets: undefined
+  }
+
+  state = {
+    query: '',
+    page: 1,
+    searchResults: [[]],
+    isLoading: true
+  }
+
+  searchSubscription: Subscription | null = null
+
+  searchSubject$ = new BehaviorSubject('')
+  pageSubject$ = new BehaviorSubject(1)
+
+  componentDidMount() {
+    this.searchSubscription = search(this.searchSubject$, this.pageSubject$, RESULTS_PER_PAGE).subscribe({
+      next: (results: UnsplashPhoto[]) => {
+        const searchResults = [...this.state.searchResults, results]
+        this.setState({
+          searchResults,
+          isLoading: false
+        })
+      }
+    })
+  }
+
+  componentWillUnmount() {
+    if (this.searchSubscription) {
+      this.searchSubscription.unsubscribe()
+    }
   }
 
   handleSelect = (photo: UnsplashPhoto) => {
@@ -38,39 +81,60 @@ export default class UnsplashAssetSource extends React.Component<Props> {
     this.props.onClose()
   }
 
-  renderConfigWarning() {
+  handleSearchTermChanged = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const query = event.currentTarget.value
+    this.setState({ query, page: 1, searchResults: [[]], isLoading: true })
+    this.pageSubject$.next(1)
+    this.searchSubject$.next(query)
+  }
+
+  handleScollerLoadMore = () => {
+    const nextPage = this.state.page + 1
+    this.setState({ page: nextPage, isLoading: true })
+    this.pageSubject$.next(nextPage)
+    this.searchSubject$.next(this.state.query)
+  }
+
+  renderImage = (props: any) => {
+    const { photo } = props
     return (
-      <div>
-        <h2>Missing configuration</h2>
-        <p>You must first configure the plugin with your Unsplash API key</p>
-        <p>
-          Edit the <code>./config/asset-source-unsplash.json</code> file in your Sanity Studio
-          folder.
-        </p>
-        <p>
-          You can obtain an API key by visiting{' '}
-          <a href="https://unsplash.com/oauth/applications" rel="noopener noreferrer" target="_blank">
-            this page
-          </a>{' '}
-          and create a new Unsplash application or use the API key for an existing one.
-        </p>
-      </div>
+      <Photo
+        onClick={this.handleSelect.bind(photo.data)}
+        key={`Photo-${photo.data.id}`}
+        data={photo.data}
+        width={photo.width}
+        height={photo.height}
+      />
     )
   }
 
   render() {
+    const { query, searchResults, isLoading } = this.state
     return (
       <Dialog title="Select image from Unsplash" onClose={this.handleClose} isOpen>
         <div className={styles.root}>
-          {pluginConfig.accessKey && (
-            <UnsplashReact
-              applicationName="Sanity Asset Source Unsplash"
-              accessKey={pluginConfig.accessKey}
-              Uploader={withDefaultProps(APIResultUploader, {})}
-              onFinishedUploading={this.handleSelect}
-            />
-          )}
-          {!pluginConfig.accessKey && this.renderConfigWarning()}
+          <SearchTextField
+            label="Search Unsplash.com"
+            placeholder="Topics or colors"
+            value={query}
+            onChange={this.handleSearchTermChanged}
+          />
+          <Scroller onLoad={this.handleScollerLoadMore} name={query} isLoading={isLoading}>
+            {!isLoading && flatten(searchResults).length === 0 && <div>No results found</div>}
+            {searchResults.map((photos: UnsplashPhoto[], index) => (
+              <Gallery
+                key={`gallery-${query || 'popular'}-${index}`}
+                photos={photos.map((photo: UnsplashPhoto) => ({
+                  src: photo.urls.small,
+                  width: 400,
+                  height: Math.round((photo.height / photo.width) * 400),
+                  key: photo.id,
+                  data: photo
+                }))}
+                renderImage={this.renderImage}
+              />
+            ))}
+          </Scroller>
         </div>
       </Dialog>
     )

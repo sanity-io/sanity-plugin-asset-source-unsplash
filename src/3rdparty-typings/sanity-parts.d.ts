@@ -28,6 +28,7 @@ declare module 'part:@sanity/components/loading/spinner' {
     center?: boolean
     message?: string
     fullscreen?: boolean
+    inline?: boolean
   }
   export default class Spinner extends React.Component<Props, any> {}
 }
@@ -37,7 +38,17 @@ declare module 'part:@sanity/base/theme/variables-style' {
   export default shim
 }
 
+declare module 'part:@sanity/components/loading/spinner-style' {
+  const shim: any
+  export default shim
+}
+
 declare module 'part:@sanity/components/dialogs/fullscreen-style' {
+  const shim: any
+  export default shim
+}
+
+declare module 'part:@sanity/components/textfields/search-style' {
   const shim: any
   export default shim
 }
@@ -52,7 +63,21 @@ declare module 'part:@sanity/components/dialogs/fullscreen' {
   export default class FullscreenDialog extends React.Component<Props, any> {}
 }
 
-declare module 'config:asset-source-unsplash' {
+declare module 'part:@sanity/components/textfields/search' {
+  import * as React from 'react'
+  interface Props {
+    label: string
+    value: string
+    onChange?: (event: any) => void
+    onKeyPress?: (event: any) => void
+    onFocus?: () => void
+    onBlur?: () => void
+    placeholder?: string | React.ReactNode
+  }
+  export default class SearchFieldField extends React.Component<Props, any> {}
+}
+
+declare module 'part:@sanity/base/client' {
   const shim: any
   export default shim
 }

@@ -31,14 +31,23 @@ export type AssetDocument = {
 
 export type UnsplashPhoto = {
   id: string
+  width: number
+  height: number
   urls: {
     full: string
+    small: string
   }
   user: {
     name: string
     username: string
+    links: {
+      html: string
+    }
   }
   links: {
     html: string
+    self: string
+    download: string
+    download_location: string
   }
 }
