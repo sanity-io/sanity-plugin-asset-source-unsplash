@@ -46,6 +46,9 @@
       ],
       "part:@sanity/components/textfields/search": [
         "./node_modules/@sanity/components/lib/textfields/SearchField.js"
+      ],
+      "part:@sanity/base/client": [
+        "./node_modules/@sanity/client/lib/sanityClient.js"
       ]
     }
   },
