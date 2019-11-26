@@ -1,6 +1,15 @@
 .root {
   display: block;
   overflow: hidden;
+
+  &:hover,
+  &:focus {
+    opacity: 0.5
+  }
+
+  &:active {
+    opacity: 0.2
+  }
 }
 
 .image {
@@ -23,7 +32,8 @@
   padding-bottom: 0.2rem;
 }
 
-.creditLine a {
+.creditLineLink {
   color: white;
   text-decoration: none;
+  cursor: pointer;
 }

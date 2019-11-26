@@ -8,7 +8,7 @@ import { Asset, AssetDocument, UnsplashPhoto } from '../types'
 import Scroller from './Scroller'
 import Photo from './Photo'
 import styles from './UnsplashAssetSource.css'
-import { search } from '../datastores/unsplash'
+import { search, sanityClient } from '../datastores/unsplash'
 
 type Props = {
   onSelect: (assets: Asset[]) => void
@@ -95,10 +95,15 @@ export default class UnsplashAssetSource extends React.Component<Props, State> {
     this.searchSubject$.next(this.state.query)
   }
 
+  getReferralName() {
+    return `Sanity Studio Plugin for project ${sanityClient.clientConfig.projectId}`
+  }
+
   renderImage = (props: any) => {
     const { photo } = props
     return (
       <Photo
+        referralName={this.getReferralName()}
         onClick={this.handleSelect.bind(photo.data)}
         key={`Photo-${photo.data.id}`}
         data={photo.data}

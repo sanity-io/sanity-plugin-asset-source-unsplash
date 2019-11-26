@@ -2,8 +2,6 @@ import client from 'part:@sanity/base/client'
 import { defer, concat, BehaviorSubject, Observable } from 'rxjs'
 import { debounceTime, switchMap, map, distinctUntilChanged, withLatestFrom } from 'rxjs/operators'
 
-const cache = []
-
 type SearchSubject = BehaviorSubject<string>
 type PageSubject = BehaviorSubject<number>
 
@@ -26,6 +24,8 @@ const fetchList = (type: string, page: number, perPage: number): Observable<any>
       method: 'GET'
     })
   )
+
+export const sanityClient = client
 
 export const search = (
   query: SearchSubject,
