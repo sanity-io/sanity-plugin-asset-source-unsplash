@@ -43,6 +43,9 @@
       ],
       "part:@sanity/components/buttons/button-grid": [
         "./node_modules/@sanity/components/lib/buttons/ButtonGrid.js"
+      ],
+      "part:@sanity/components/textfields/search": [
+        "./node_modules/@sanity/components/lib/textfields/SearchField.js"
       ]
     }
   },
