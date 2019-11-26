@@ -4,10 +4,6 @@
 
 `sanity install asset-source-unsplash`
 
-Edit the config file found in `./config/asset-source-unsplash.json` with your Unsplash API key.
-
-You can create a new API key or find an existing one here: https://unsplash.com/oauth/applications
-
 ## Developing on this module
 
 To simulate using your development version as a real module inside a studio, you can do the following:
@@ -100,7 +96,9 @@ When you are done and have published your new version, you can run `npm unlink` 
 
 ```
 
-``´json
+## Example resulting asset document
+
+```json
 {
   "ms": 7,
   "query": "*[_type == \"sanity.imageAsset\" \u0026\u0026 _id == \"image-a6904e5887baafcf72f686cfa3e98399fd3ff74a-2600x1548-jpg\"]",
@@ -195,6 +193,7 @@ When you are done and have published your new version, you can run `npm unlink` 
 ```
 
 ## Futher reading
-https://unsplash.com/documentation#get-a-photo
-https://github.com/danielma/unsplash-react
+
+* https://unsplash.com/documentation
+
 
