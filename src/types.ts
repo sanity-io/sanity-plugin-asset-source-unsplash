@@ -29,6 +29,13 @@ export type AssetDocument = {
   originalFilename?: string
 }
 
+export type SanityDocument = {
+  _id: string
+  _rev?: string
+  _updatedAt?: string
+  [attribute: string]: any
+}
+
 export type UnsplashPhoto = {
   id: string
   width: number

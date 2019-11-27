@@ -72,6 +72,7 @@ declare module 'part:@sanity/components/textfields/search' {
     onKeyPress?: (event: any) => void
     onFocus?: () => void
     onBlur?: () => void
+    hotkeys?: string[]
     placeholder?: string | React.ReactNode
   }
   export default class SearchFieldField extends React.Component<Props, any> {}

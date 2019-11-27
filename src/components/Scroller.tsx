@@ -48,8 +48,8 @@ export default class Scroller extends React.Component<Props, State> {
   }
 
   componentWillUnmount() {
-    if (this.scroll) {
-      document.removeEventListener('scroll', this.scroll)
+    if (this.scroll && this.rootElm.current) {
+      this.rootElm.current.removeEventListener('scroll', this.scroll)
     }
   }
 

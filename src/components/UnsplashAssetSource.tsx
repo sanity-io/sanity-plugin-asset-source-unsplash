@@ -4,7 +4,7 @@ import { flatten } from 'lodash'
 import { BehaviorSubject, Subscription } from 'rxjs'
 import Dialog from 'part:@sanity/components/dialogs/fullscreen'
 import SearchTextField from 'part:@sanity/components/textfields/search'
-import { Asset, AssetDocument, UnsplashPhoto } from '../types'
+import { Asset, AssetDocument, UnsplashPhoto, SanityDocument } from '../types'
 import Scroller from './Scroller'
 import Photo from './Photo'
 import styles from './UnsplashAssetSource.css'
@@ -15,6 +15,7 @@ type Props = {
   onClose: () => void
   selectedAssets?: AssetDocument[]
   selectionType: 'single' | 'multiple'
+  document?: SanityDocument
 }
 
 type State = {
@@ -22,6 +23,7 @@ type State = {
   searchResults: UnsplashPhoto[][]
   page: number
   isLoading: boolean
+  cursor: number
 }
 
 const RESULTS_PER_PAGE = 42
@@ -32,6 +34,7 @@ export default class UnsplashAssetSource extends React.Component<Props, State> {
   }
 
   state = {
+    cursor: 0,
     query: '',
     page: 1,
     searchResults: [[]],
@@ -44,7 +47,11 @@ export default class UnsplashAssetSource extends React.Component<Props, State> {
   pageSubject$ = new BehaviorSubject(1)
 
   componentDidMount() {
-    this.searchSubscription = search(this.searchSubject$, this.pageSubject$, RESULTS_PER_PAGE).subscribe({
+    this.searchSubscription = search(
+      this.searchSubject$,
+      this.pageSubject$,
+      RESULTS_PER_PAGE
+    ).subscribe({
       next: (results: UnsplashPhoto[]) => {
         const searchResults = [...this.state.searchResults, results]
         this.setState({
@@ -83,7 +90,7 @@ export default class UnsplashAssetSource extends React.Component<Props, State> {
 
   handleSearchTermChanged = (event: React.ChangeEvent<HTMLInputElement>) => {
     const query = event.currentTarget.value
-    this.setState({ query, page: 1, searchResults: [[]], isLoading: true })
+    this.setState({ query, page: 1, searchResults: [[]], isLoading: true, cursor: 0 })
     this.pageSubject$.next(1)
     this.searchSubject$.next(query)
   }
@@ -95,26 +102,53 @@ export default class UnsplashAssetSource extends React.Component<Props, State> {
     this.searchSubject$.next(this.state.query)
   }
 
-  getReferralName() {
-    return `Sanity Studio Plugin for project ${sanityClient.clientConfig.projectId}`
+  handleKeyDown = (event: any) => {
+    const { cursor } = this.state
+    if ((event.keyCode === 38 || event.keyCode === 37) && cursor > 0) {
+      this.setState(prevState => ({
+        cursor: prevState.cursor - 1
+      }))
+    } else if (
+      (event.keyCode === 40 || event.keyCode === 39) &&
+      cursor < this.getPhotos().length - 1
+    ) {
+      this.setState(prevState => ({
+        cursor: prevState.cursor + 1
+      }))
+    }
+  }
+
+  getPhotos() {
+    return flatten(this.state.searchResults)
+  }
+
+  updateCursor = (photo: UnsplashPhoto) => {
+    const index = this.getPhotos().findIndex((result: UnsplashPhoto) => result.id === photo.id)
+    this.setState({cursor: index})
   }
 
   renderImage = (props: any) => {
     const { photo } = props
+    const active =
+      this.getPhotos().findIndex((result: UnsplashPhoto) => result.id === photo.data.id) ===
+        this.state.cursor || false
     return (
       <Photo
-        referralName={this.getReferralName()}
         onClick={this.handleSelect.bind(photo.data)}
+        onKeyDown={this.handleKeyDown}
         key={`Photo-${photo.data.id}`}
         data={photo.data}
         width={photo.width}
         height={photo.height}
+        active={active}
+        onFocus={this.updateCursor}
       />
     )
   }
 
   render() {
     const { query, searchResults, isLoading } = this.state
+    const galleryPhotoWidth = 400
     return (
       <Dialog title="Select image from Unsplash" onClose={this.handleClose} isOpen>
         <div className={styles.root}>
@@ -131,8 +165,8 @@ export default class UnsplashAssetSource extends React.Component<Props, State> {
                 key={`gallery-${query || 'popular'}-${index}`}
                 photos={photos.map((photo: UnsplashPhoto) => ({
                   src: photo.urls.small,
-                  width: 400,
-                  height: Math.round((photo.height / photo.width) * 400),
+                  width: galleryPhotoWidth,
+                  height: Math.round((photo.height / photo.width) * galleryPhotoWidth),
                   key: photo.id,
                   data: photo
                 }))}
