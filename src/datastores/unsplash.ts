@@ -1,6 +1,7 @@
 import client from 'part:@sanity/base/client'
 import { defer, concat, BehaviorSubject, Observable } from 'rxjs'
 import { debounceTime, switchMap, map, distinctUntilChanged, withLatestFrom } from 'rxjs/operators'
+import { UnsplashPhoto } from 'src/types'
 
 type SearchSubject = BehaviorSubject<string>
 type PageSubject = BehaviorSubject<number>
@@ -24,6 +25,22 @@ const fetchList = (type: string, page: number, perPage: number): Observable<any>
       method: 'GET'
     })
   )
+
+export function fetchDownloadUrl(photo: UnsplashPhoto): Promise<string> {
+  const downloadUrl = photo.links.download_location.replace(
+    'https://api.unsplash.com',
+    '/addons/unsplash'
+  )
+  return client
+    .request({
+      url: downloadUrl,
+      withCredentials: true,
+      method: 'GET'
+    })
+    .then((result: { url: string }) => {
+      return result.url
+    })
+}
 
 export const sanityClient = client
 

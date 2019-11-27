@@ -8,7 +8,7 @@ import { Asset, AssetDocument, UnsplashPhoto, SanityDocument } from '../types'
 import Scroller from './Scroller'
 import Photo from './Photo'
 import styles from './UnsplashAssetSource.css'
-import { search, sanityClient } from '../datastores/unsplash'
+import { search, fetchDownloadUrl, sanityClient } from '../datastores/unsplash'
 
 type Props = {
   onSelect: (assets: Asset[]) => void
@@ -27,6 +27,7 @@ type State = {
 }
 
 const RESULTS_PER_PAGE = 42
+const GALLERY_PHOTO_WIDTH = 400
 
 export default class UnsplashAssetSource extends React.Component<Props, State> {
   static defaultProps = {
@@ -67,21 +68,23 @@ export default class UnsplashAssetSource extends React.Component<Props, State> {
       this.searchSubscription.unsubscribe()
     }
   }
-
   handleSelect = (photo: UnsplashPhoto) => {
-    const asset: Asset = {
-      kind: 'url',
-      value: photo.urls.full,
-      assetDocumentProps: {
-        source: {
-          name: 'unsplash',
-          id: photo.id,
-          url: photo.links.html
-        },
-        creditLine: `${photo.user.name} by Unsplash`
+    this.setState({isLoading: true})
+    return fetchDownloadUrl(photo).then(downloadUrl => {
+      const asset: Asset = {
+        kind: 'url',
+        value: downloadUrl,
+        assetDocumentProps: {
+          source: {
+            name: 'unsplash',
+            id: photo.id,
+            url: photo.links.html
+          },
+          creditLine: `${photo.user.name} by Unsplash`
+        }
       }
-    }
-    this.props.onSelect([asset])
+      this.props.onSelect([asset])
+    })
   }
 
   handleClose = () => {
@@ -124,7 +127,7 @@ export default class UnsplashAssetSource extends React.Component<Props, State> {
 
   updateCursor = (photo: UnsplashPhoto) => {
     const index = this.getPhotos().findIndex((result: UnsplashPhoto) => result.id === photo.id)
-    this.setState({cursor: index})
+    this.setState({ cursor: index })
   }
 
   renderImage = (props: any) => {
@@ -148,7 +151,6 @@ export default class UnsplashAssetSource extends React.Component<Props, State> {
 
   render() {
     const { query, searchResults, isLoading } = this.state
-    const galleryPhotoWidth = 400
     return (
       <Dialog title="Select image from Unsplash" onClose={this.handleClose} isOpen>
         <div className={styles.root}>
@@ -165,8 +167,8 @@ export default class UnsplashAssetSource extends React.Component<Props, State> {
                 key={`gallery-${query || 'popular'}-${index}`}
                 photos={photos.map((photo: UnsplashPhoto) => ({
                   src: photo.urls.small,
-                  width: galleryPhotoWidth,
-                  height: Math.round((photo.height / photo.width) * galleryPhotoWidth),
+                  width: GALLERY_PHOTO_WIDTH,
+                  height: Math.round((photo.height / photo.width) * GALLERY_PHOTO_WIDTH),
                   key: photo.id,
                   data: photo
                 }))}
