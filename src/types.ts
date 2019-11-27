@@ -40,6 +40,8 @@ export type UnsplashPhoto = {
   id: string
   width: number
   height: number
+  description?: string
+  alt_description?: string
   urls: {
     full: string
     small: string

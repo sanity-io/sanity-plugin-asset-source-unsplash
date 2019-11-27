@@ -71,6 +71,7 @@ export default class UnsplashAssetSource extends React.Component<Props, State> {
   handleSelect = (photo: UnsplashPhoto) => {
     this.setState({isLoading: true})
     return fetchDownloadUrl(photo).then(downloadUrl => {
+      const description = photo.description || undefined
       const asset: Asset = {
         kind: 'url',
         value: downloadUrl,
@@ -80,6 +81,7 @@ export default class UnsplashAssetSource extends React.Component<Props, State> {
             id: photo.id,
             url: photo.links.html
           },
+          description,
           creditLine: `${photo.user.name} by Unsplash`
         }
       }
