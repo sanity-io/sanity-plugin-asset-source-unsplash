@@ -1,5 +1,5 @@
 # Sanity Asset Source Plugin: Unsplash
-Seach photos on Unsplash and use them directly inside of your Sanity Studio.
+Search for photos on Unsplash and add them to your project right inside of your Sanity Studio.
 
 [![Build Status](https://travis-ci.org/sanity-io/sanity-plugin-asset-source-unsplash.svg?branch=master)](https://travis-ci.org/sanity-io/sanity-plugin-asset-source-unsplash)
 
@@ -9,7 +9,7 @@ Seach photos on Unsplash and use them directly inside of your Sanity Studio.
 
 ## Part name
 
-If you need to do cusotomize available asset sources, the plugin part name for this asset source is:
+If you need to do customize available asset sources, the plugin part name for this asset source is:
 
 `part:sanity-plugin-asset-source-unsplash/image-asset-source`
 
