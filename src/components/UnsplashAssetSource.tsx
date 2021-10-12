@@ -2,13 +2,12 @@ import React from 'react'
 import Gallery from 'react-photo-gallery'
 import { flatten } from 'lodash'
 import { BehaviorSubject, Subscription } from 'rxjs'
-import Dialog from 'part:@sanity/components/dialogs/fullscreen'
-import SearchTextField from 'part:@sanity/components/textfields/search'
 import { Asset, AssetDocument, UnsplashPhoto, SanityDocument } from '../types'
-import Scroller from './Scroller'
 import Photo from './Photo'
-import styles from './UnsplashAssetSource.css'
-import { search, fetchDownloadUrl, sanityClient } from '../datastores/unsplash'
+import { search, fetchDownloadUrl } from '../datastores/unsplash'
+import { Dialog, TextInput, Text, Stack, Card, Flex, Spinner } from '@sanity/ui'
+import { Search } from './UnsplashAssetSource.styled'
+import InfiniteScroll from 'react-infinite-scroll-component'
 
 type Props = {
   onSelect: (assets: Asset[]) => void
@@ -69,7 +68,7 @@ export default class UnsplashAssetSource extends React.Component<Props, State> {
     }
   }
   handleSelect = (photo: UnsplashPhoto) => {
-    this.setState({isLoading: true})
+    this.setState({ isLoading: true })
     return fetchDownloadUrl(photo).then(downloadUrl => {
       const description = photo.description || undefined
       const asset: Asset = {
@@ -153,17 +152,52 @@ export default class UnsplashAssetSource extends React.Component<Props, State> {
 
   render() {
     const { query, searchResults, isLoading } = this.state
+
     return (
-      <Dialog title="Select image from Unsplash" onClose={this.handleClose} isOpen>
-        <div className={styles.root}>
-          <SearchTextField
-            label="Search Unsplash.com"
-            placeholder="Topics or colors"
-            value={query}
-            onChange={this.handleSearchTermChanged}
-          />
-          <Scroller onLoad={this.handleScollerLoadMore} name={query} isLoading={isLoading}>
-            {!isLoading && flatten(searchResults).length === 0 && <div>No results found</div>}
+      <Dialog
+        id="unsplash-asset-source"
+        header="Select image from Unsplash"
+        onClose={this.handleClose}
+        open
+        width={4}
+      >
+        <Stack space={3} padding={4}>
+          <Card>
+            <Search space={3}>
+              <Text size={1} weight="semibold">
+                Search Unsplash
+              </Text>
+              <TextInput
+                label="Search Unsplash.com"
+                placeholder="Topics or colors"
+                value={query}
+                onChange={this.handleSearchTermChanged}
+              />
+            </Search>
+          </Card>
+          {!isLoading && this.getPhotos().length === 0 && (
+            <Text size={1} muted>
+              No results found
+            </Text>
+          )}
+          <InfiniteScroll
+            dataLength={this.getPhotos().length} // This is important field to render the next data
+            next={this.handleScollerLoadMore}
+            // scrollableTarget="unsplash-scroller"
+            hasMore={true}
+            scrollThreshold={0.99}
+            height="60vh"
+            loader={
+              <Flex align="center" justify="center" padding={2}>
+                <Spinner muted />
+              </Flex>
+            }
+            endMessage={
+              <Text size={1} muted>
+                No more results
+              </Text>
+            }
+          >
             {searchResults.map((photos: UnsplashPhoto[], index) => (
               <Gallery
                 key={`gallery-${query || 'popular'}-${index}`}
@@ -177,8 +211,8 @@ export default class UnsplashAssetSource extends React.Component<Props, State> {
                 renderImage={this.renderImage}
               />
             ))}
-          </Scroller>
-        </div>
+          </InfiniteScroll>
+        </Stack>
       </Dialog>
     )
   }

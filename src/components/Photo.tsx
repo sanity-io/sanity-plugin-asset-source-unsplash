@@ -1,6 +1,7 @@
+import { Text } from '@sanity/ui'
 import React, { RefObject } from 'react'
-import styles from './Photo.css'
 import { UnsplashPhoto } from 'src/types'
+import { CreditLine, CreditLineLink, Root } from './Photo.styled'
 
 type Props = {
   data: UnsplashPhoto
@@ -50,14 +51,12 @@ export default class Photo extends React.Component<Props> {
   }
 
   render() {
-    const { width, height, data, active } = this.props
+    const { width, height, data } = this.props
     const src = data.urls.small
     const userName = data.user.name
     return (
-      <a
+      <Root
         ref={this.rootElm}
-        href="#"
-        className={`${styles.root}`}
         title={`Select image by ${userName} from Unsplash`}
         tabIndex={0}
         onKeyDown={this.handleKeyDown}
@@ -69,15 +68,14 @@ export default class Photo extends React.Component<Props> {
         }}
         onClick={this.handleClick}
       >
-        <div className={styles.creditLine} onClick={this.handleCreditLineClicked}>
-          <div
-            className={styles.creditLineLink}
-            title={`Open image by ${userName} on Unsplash in new window`}
-          >
-            By @{data.user.username}
-          </div>
-        </div>
-      </a>
+        <CreditLineLink onClick={this.handleCreditLineClicked}>
+          <CreditLine padding={2} radius={2} margin={2}>
+            <Text size={1} title={`Open image by ${userName} on Unsplash in new window`}>
+              By @{data.user.username}
+            </Text>
+          </CreditLine>
+        </CreditLineLink>
+      </Root>
     )
   }
 }
