@@ -16,7 +16,7 @@ type Props = {
 const UTM_SOURCE = 'sanity-plugin-asset-source-unsplash'
 
 export default class Photo extends React.Component<Props> {
-  rootElm: RefObject<HTMLAnchorElement> = React.createRef()
+  rootElm: RefObject<HTMLDivElement> = React.createRef()
 
   handleClick = (event: any) => {
     this.props.onClick(this.props.data)
