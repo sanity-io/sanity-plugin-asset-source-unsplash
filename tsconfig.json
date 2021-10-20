@@ -20,7 +20,8 @@
       "part:@sanity/base/client": [
         "./node_modules/@sanity/client/lib/sanityClient.js"
       ]
-    }
+    },
+    "skipLibCheck": true
   },
   "include": ["src/**/*"]
 }
