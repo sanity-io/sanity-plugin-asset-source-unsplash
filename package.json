@@ -76,7 +76,6 @@
   "peerDependencies": {
     "@sanity/base": ">=2.13.0",
     "@sanity/components": "^2.13.0",
-    "@sanity/ui": "^0.36.12",
     "lodash": ">= 4.17.4",
     "react": "^16.9",
     "react-dom": ">= 16.2",
@@ -88,7 +87,6 @@
     "@commitlint/config-conventional": "^7.6.0",
     "@sanity/base": "^2.21.5",
     "@sanity/components": "^2.13.0",
-    "@sanity/ui": "^0.36.12",
     "@types/jest": "^23.3.2",
     "@types/lodash": "^4.14.149",
     "@types/node": "^10.17.4",
@@ -135,6 +133,7 @@
     "typescript": "^3.8.0"
   },
   "dependencies": {
+    "@sanity/ui": "^0.36.12",
     "react-infinite-scroll-component": "^6.1.0",
     "react-photo-gallery": "^8.0.0"
   }
