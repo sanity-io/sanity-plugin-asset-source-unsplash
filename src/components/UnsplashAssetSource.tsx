@@ -88,7 +88,6 @@ export default class UnsplashAssetSource extends React.Component<Props, State> {
             links: {
               html: photo.user.links.html
             }
-
           }
         }
       }
