@@ -81,7 +81,15 @@ export default class UnsplashAssetSource extends React.Component<Props, State> {
             url: photo.links.html
           },
           description,
-          creditLine: `${photo.user.name} by Unsplash`
+          creditLine: `${photo.user.name} by Unsplash`,
+          user: {
+            name: photo.user.name,
+            username: photo.user.username,
+            links: {
+              html: photo.user.links.html
+            }
+
+          }
         }
       }
       this.props.onSelect([asset])

@@ -12,6 +12,13 @@ export type Asset = {
       url?: string
     }
     creditLine?: string
+    user?: {
+      name?: string
+      username?: string
+      links?: {
+        html?: string
+      }
+    }
   }
 }
 
@@ -27,6 +34,13 @@ export type AssetDocument = {
   }
   creditLine?: string
   originalFilename?: string
+  user?: {
+    name?: string
+    username?: string
+    links?: {
+      html?: string
+    }
+  }
 }
 
 export type SanityDocument = {
