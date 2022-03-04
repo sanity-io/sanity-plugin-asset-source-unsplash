@@ -1,11 +1,11 @@
 import React from 'react'
-import Gallery from 'react-photo-gallery'
+import { PhotoAlbum, RenderContainerProps } from 'react-photo-album'
 import { flatten } from 'lodash'
 import { BehaviorSubject, Subscription } from 'rxjs'
-import { Asset, AssetDocument, UnsplashPhoto, SanityDocument } from '../types'
+import { Asset, AssetDocument, SanityDocument, UnsplashPhoto } from '../types'
 import Photo from './Photo'
-import { search, fetchDownloadUrl } from '../datastores/unsplash'
-import { Dialog, TextInput, Text, Stack, Card, Flex, Spinner } from '@sanity/ui'
+import { fetchDownloadUrl, search } from '../datastores/unsplash'
+import { Card, Dialog, Flex, Spinner, Stack, Text, TextInput } from '@sanity/ui'
 import { Search } from './UnsplashAssetSource.styled'
 import InfiniteScroll from 'react-infinite-scroll-component'
 
@@ -26,7 +26,8 @@ type State = {
 }
 
 const RESULTS_PER_PAGE = 42
-const GALLERY_PHOTO_WIDTH = 400
+const PHOTO_SPACING = 2
+const PHOTO_PADDING = 1 // offset the 1px border width
 
 export default class UnsplashAssetSource extends React.Component<Props, State> {
   static defaultProps = {
@@ -67,6 +68,7 @@ export default class UnsplashAssetSource extends React.Component<Props, State> {
       this.searchSubscription.unsubscribe()
     }
   }
+
   handleSelect = (photo: UnsplashPhoto) => {
     this.setState({ isLoading: true })
     return fetchDownloadUrl(photo).then(downloadUrl => {
@@ -132,22 +134,30 @@ export default class UnsplashAssetSource extends React.Component<Props, State> {
   }
 
   renderImage = (props: any) => {
-    const { photo } = props
+    const { photo, layout } = props
     const active =
       this.getPhotos().findIndex((result: UnsplashPhoto) => result.id === photo.data.id) ===
-        this.state.cursor || false
+      this.state.cursor || false
     return (
       <Photo
         onClick={this.handleSelect.bind(photo.data)}
         onKeyDown={this.handleKeyDown}
-        key={`Photo-${photo.data.id}`}
         data={photo.data}
-        width={photo.width}
-        height={photo.height}
+        width={layout.width}
+        height={layout.height}
         active={active}
         onFocus={this.updateCursor}
       />
     )
+  }
+
+  renderContainer = (props: RenderContainerProps) => {
+    const { containerProps: { style, ...restContainerProps }, containerRef, children } = props
+    return (
+      <div ref={containerRef}
+           style={{ ...style, marginBottom: `${PHOTO_SPACING}px` }} {...restContainerProps}>
+        {children}
+      </div>)
   }
 
   render() {
@@ -155,8 +165,8 @@ export default class UnsplashAssetSource extends React.Component<Props, State> {
 
     return (
       <Dialog
-        id="unsplash-asset-source"
-        header="Select image from Unsplash"
+        id='unsplash-asset-source'
+        header='Select image from Unsplash'
         onClose={this.handleClose}
         open
         width={4}
@@ -164,12 +174,12 @@ export default class UnsplashAssetSource extends React.Component<Props, State> {
         <Stack space={3} padding={4}>
           <Card>
             <Search space={3}>
-              <Text size={1} weight="semibold">
+              <Text size={1} weight='semibold'>
                 Search Unsplash
               </Text>
               <TextInput
-                label="Search Unsplash.com"
-                placeholder="Topics or colors"
+                label='Search Unsplash.com'
+                placeholder='Topics or colors'
                 value={query}
                 onChange={this.handleSearchTermChanged}
               />
@@ -186,9 +196,9 @@ export default class UnsplashAssetSource extends React.Component<Props, State> {
             // scrollableTarget="unsplash-scroller"
             hasMore={true}
             scrollThreshold={0.99}
-            height="60vh"
+            height='60vh'
             loader={
-              <Flex align="center" justify="center" padding={2}>
+              <Flex align='center' justify='center' padding={3}>
                 <Spinner muted />
               </Flex>
             }
@@ -198,19 +208,25 @@ export default class UnsplashAssetSource extends React.Component<Props, State> {
               </Text>
             }
           >
-            {searchResults.map((photos: UnsplashPhoto[], index) => (
-              <Gallery
-                key={`gallery-${query || 'popular'}-${index}`}
-                photos={photos.map((photo: UnsplashPhoto) => ({
-                  src: photo.urls.small,
-                  width: GALLERY_PHOTO_WIDTH,
-                  height: Math.round((photo.height / photo.width) * GALLERY_PHOTO_WIDTH),
-                  key: photo.id,
-                  data: photo
-                }))}
-                renderImage={this.renderImage}
-              />
-            ))}
+            {searchResults.filter((photos) => photos.length > 0).map((photos: UnsplashPhoto[], index) =>
+              (
+                <PhotoAlbum
+                  key={`gallery-${query || 'popular'}-${index}`}
+                  layout='rows'
+                  spacing={PHOTO_SPACING}
+                  padding={PHOTO_PADDING}
+                  targetRowHeight={(width) => width / 2.5}
+                  photos={photos.map((photo: UnsplashPhoto) => ({
+                    src: photo.urls.small,
+                    width: photo.width,
+                    height: photo.height,
+                    key: photo.id,
+                    data: photo
+                  }))}
+                  renderPhoto={this.renderImage}
+                  renderContainer={this.renderContainer}
+                />
+              ))}
           </InfiniteScroll>
         </Stack>
       </Dialog>

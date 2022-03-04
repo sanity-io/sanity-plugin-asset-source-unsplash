@@ -10,6 +10,7 @@ export const Root = styled.div`
   position: relative;
   outline: none !important;
   border: 1px solid white;
+  box-sizing: content-box;
   user-drag: none;
 
   &:hover {
