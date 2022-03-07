@@ -1,5 +1,5 @@
 import React from 'react'
-import { PhotoAlbum, RenderContainerProps } from 'react-photo-album'
+import PhotoAlbum from 'react-photo-album'
 import { flatten } from 'lodash'
 import { BehaviorSubject, Subscription } from 'rxjs'
 import { Asset, AssetDocument, SanityDocument, UnsplashPhoto } from '../types'
@@ -151,15 +151,6 @@ export default class UnsplashAssetSource extends React.Component<Props, State> {
     )
   }
 
-  renderContainer = (props: RenderContainerProps) => {
-    const { containerProps: { style, ...restContainerProps }, containerRef, children } = props
-    return (
-      <div ref={containerRef}
-           style={{ ...style, marginBottom: `${PHOTO_SPACING}px` }} {...restContainerProps}>
-        {children}
-      </div>)
-  }
-
   render() {
     const { query, searchResults, isLoading } = this.state
 
@@ -215,7 +206,7 @@ export default class UnsplashAssetSource extends React.Component<Props, State> {
                   layout='rows'
                   spacing={PHOTO_SPACING}
                   padding={PHOTO_PADDING}
-                  targetRowHeight={(width) => width / 2.5}
+                  targetRowHeight={(width) => width < 300 ? 150 : width < 600 ? 200 : 300}
                   photos={photos.map((photo: UnsplashPhoto) => ({
                     src: photo.urls.small,
                     width: photo.width,
@@ -224,7 +215,7 @@ export default class UnsplashAssetSource extends React.Component<Props, State> {
                     data: photo
                   }))}
                   renderPhoto={this.renderImage}
-                  renderContainer={this.renderContainer}
+                  componentsProps={{ containerProps: { style: { marginBottom: `${PHOTO_SPACING}px` } } }}
                 />
               ))}
           </InfiniteScroll>
