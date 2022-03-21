@@ -21,7 +21,7 @@
   "author": "Sanity.io <hello@sanity.io>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/biblioteksentralen/sanity-plugin-asset-source-unsplash.git"
+    "url": "https://github.com/biblioteksentralen/sanity-plugin-asset-source-unsplash"
   },
   "license": "MIT",
   "engines": {
