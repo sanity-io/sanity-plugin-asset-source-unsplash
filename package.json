@@ -1,5 +1,5 @@
 {
-  "name": "sanity-plugin-asset-source-unsplash",
+  "name": "@biblioteksentralen/sanity-plugin-asset-source-unsplash",
   "version": "0.1.5",
   "description": "Use images from Unsplash.com in your Sanity Studio",
   "keywords": [
@@ -21,7 +21,7 @@
   "author": "Sanity.io <hello@sanity.io>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sanity-io/sanity-plugin-asset-source-unsplash"
+    "url": "https://github.com/biblioteksentralen/sanity-plugin-asset-source-unsplash.git"
   },
   "license": "MIT",
   "engines": {
