@@ -76,9 +76,9 @@
   "peerDependencies": {
     "@sanity/base": ">=2.13.0",
     "@sanity/components": "^2.13.0",
-    "lodash": ">= 4.17.4",
-    "react": "^16.9",
-    "react-dom": ">= 16.2",
+    "lodash": ">=4.17.4",
+    "react": ">=16.14.0",
+    "react-dom": ">=16.2",
     "rxjs": ">=6.5.2",
     "styled-components": "^5.2.0"
   },
@@ -115,6 +115,7 @@
     "rollup-plugin-commonjs": "^9.3.4",
     "rollup-plugin-json": "^3.1.0",
     "rollup-plugin-node-resolve": "^3.4.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-sourcemaps": "^0.4.2",
     "rollup-plugin-typescript2": "^0.25.2",
     "rxjs": "^6.5.3",
@@ -135,6 +136,6 @@
   "dependencies": {
     "@sanity/ui": "^0.36.12",
     "react-infinite-scroll-component": "^6.1.0",
-    "react-photo-gallery": "^8.0.0"
+    "react-photo-album": "^1.10.2"
   }
 }
