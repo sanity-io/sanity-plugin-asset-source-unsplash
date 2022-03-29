@@ -1,7 +1,7 @@
 # Sanity Asset Source Plugin: Unsplash
 Search for photos on Unsplash and add them to your project right inside Sanity Studio.
 
-[![Build Status](https://travis-ci.org/sanity-io/sanity-plugin-asset-source-unsplash.svg?branch=master)](https://travis-ci.org/sanity-io/sanity-plugin-asset-source-unsplash)
+[![npm version](https://badge.fury.io/js/@biblioteksentralen%2Fsanity-plugin-asset-source-unsplash.svg)](https://badge.fury.io/js/@biblioteksentralen%2Fsanity-plugin-asset-source-unsplash)
 
 ## Installation
 
