@@ -136,6 +136,6 @@
   "dependencies": {
     "@sanity/ui": "^0.36.12",
     "react-infinite-scroll-component": "^6.1.0",
-    "react-photo-album": "^1.10.2"
+    "react-photo-album": "1.10.2"
   }
 }
