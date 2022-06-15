@@ -1,5 +1,5 @@
-import { Text } from '@sanity/ui'
-import React, { RefObject } from 'react'
+import { Text, useTheme } from '@sanity/ui'
+import React, { useCallback, useEffect, useRef } from 'react'
 import { UnsplashPhoto } from 'src/types'
 import { CreditLine, CreditLineLink, Root } from './Photo.styled'
 
@@ -15,67 +15,76 @@ type Props = {
 
 const UTM_SOURCE = 'sanity-plugin-asset-source-unsplash'
 
-export default class Photo extends React.Component<Props> {
-  rootElm: RefObject<HTMLDivElement> = React.createRef()
+export default function Photo(props: Props) {
+  const { onClick, data, onKeyDown, onFocus, active, width, height } = props
+  const rootElm = useRef<HTMLDivElement>(null)
+  const prevActive = useRef<boolean>(false)
 
-  handleClick = (event: any) => {
-    this.props.onClick(this.props.data)
-  }
+  const handleClick = useCallback(() => {
+    onClick(data)
+  }, [onClick, data])
 
-  handleCreditLineClicked = (event: any) => {
-    event.stopPropagation()
-    const { data } = this.props
-    const url = `${data.links.html}?utm_source=${encodeURIComponent(
-      UTM_SOURCE
-    )}&utm_medium=referral`
-    window.open(url, data.id, 'noreferrer,noopener')
-  }
+  const handleCreditLineClicked = useCallback(
+    (event: any) => {
+      event.stopPropagation()
+      const url = `${data.links.html}?utm_source=${encodeURIComponent(
+        UTM_SOURCE
+      )}&utm_medium=referral`
+      window.open(url, data.id, 'noreferrer,noopener')
+    },
+    [data]
+  )
 
-  handleKeyDown = (event: any) => {
-    const { onKeyDown, data } = this.props
-    onKeyDown(event)
-    if (event.keyCode === 13) {
-      this.props.onClick(data)
+  const handleKeyDown = useCallback(
+    (event: any) => {
+      onKeyDown(event)
+      if (event.keyCode === 13) {
+        onClick(data)
+      }
+    },
+    [onKeyDown, data, onClick]
+  )
+
+  const handleMouseDown = useCallback(() => {
+    onFocus(data)
+  }, [onFocus, data])
+
+  useEffect(() => {
+    if (!prevActive.current && active && rootElm.current) {
+      rootElm.current.focus()
+      onFocus(data)
     }
-  }
+    prevActive.current = active
+    // data changing alone should not re-trigger effect
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [active])
 
-  handleMouseDown = (event: any) => {
-    this.props.onFocus(this.props.data)
-  }
+  const src = data.urls.small
+  const userName = data.user.name
 
-  componentDidUpdate(prevProps: Props) {
-    if (!prevProps.active && this.props.active && this.rootElm.current) {
-      this.rootElm.current.focus()
-      this.props.onFocus(this.props.data)
-    }
-  }
-
-  render() {
-    const { width, height, data } = this.props
-    const src = data.urls.small
-    const userName = data.user.name
-    return (
-      <Root
-        ref={this.rootElm}
-        title={`Select image by ${userName} from Unsplash`}
-        tabIndex={0}
-        onKeyDown={this.handleKeyDown}
-        onMouseDown={this.handleMouseDown}
-        style={{
-          width: `${width}px`,
-          height: `${height}px`,
-          backgroundImage: `url("${src}")`
-        }}
-        onClick={this.handleClick}
-      >
-        <CreditLineLink onClick={this.handleCreditLineClicked}>
-          <CreditLine padding={2} radius={2} margin={2}>
-            <Text size={1} title={`Open image by ${userName} on Unsplash in new window`}>
-              By @{data.user.username}
-            </Text>
-          </CreditLine>
-        </CreditLineLink>
-      </Root>
-    )
-  }
+  const theme = useTheme().sanity
+  return (
+    <Root
+      ref={rootElm}
+      studioTheme={theme}
+      title={`Select image by ${userName} from Unsplash`}
+      tabIndex={0}
+      onKeyDown={handleKeyDown}
+      onMouseDown={handleMouseDown}
+      style={{
+        width: `${width}px`,
+        height: `${height}px`,
+        backgroundImage: `url("${src}")`,
+      }}
+      onClick={handleClick}
+    >
+      <CreditLineLink onClick={handleCreditLineClicked}>
+        <CreditLine padding={2} radius={2} margin={2}>
+          <Text size={1} title={`Open image by ${userName} on Unsplash in new window`}>
+            By @{data.user.username}
+          </Text>
+        </CreditLine>
+      </CreditLineLink>
+    </Root>
+  )
 }
