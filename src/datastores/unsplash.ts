@@ -6,14 +6,35 @@ import { UnsplashPhoto } from 'src/types'
 type SearchSubject = BehaviorSubject<string>
 type PageSubject = BehaviorSubject<number>
 
+let token: string | undefined
+const projectId = client?.clientConfig?.projectId
+
+if (!projectId) console.error('Unsplash asset source could not get project ID from client')
+
+// For other browsers than Chrome we need to explicitly set the auth token,
+// similarly to https://github.com/sanity-io/sanity/pull/3155
+if (projectId && typeof window !== 'undefined' && !!localStorage) {
+  const localStorageToken = localStorage.getItem(`__studio_auth_token_${projectId}`)
+  try {
+    token = localStorageToken ? JSON.parse(localStorageToken)?.token : undefined
+  } catch (err) {
+    console.error('Could not parse Sanity auth token from localStorage:', err)
+  }
+}
+
+const requestConfig = {
+  withCredentials: true,
+  method: 'GET',
+  token
+}
+
 const fetchSearch = (query: string, page: number, perPage: number): Observable<any> =>
   defer(() =>
     client.observable.request({
       url: `/addons/unsplash/search/photos?query=${encodeURIComponent(
         query
       )}&page=${page}&per_page=${perPage}`,
-      withCredentials: true,
-      method: 'GET'
+      ...requestConfig
     })
   )
 
@@ -21,8 +42,7 @@ const fetchList = (type: string, page: number, perPage: number): Observable<any>
   defer(() =>
     client.observable.request({
       url: `/addons/unsplash/photos?order_by=${type}&page=${page}&per_page=${perPage}`,
-      withCredentials: true,
-      method: 'GET'
+      ...requestConfig
     })
   )
 
@@ -34,8 +54,7 @@ export function fetchDownloadUrl(photo: UnsplashPhoto): Promise<string> {
   return client
     .request({
       url: downloadUrl,
-      withCredentials: true,
-      method: 'GET'
+      ...requestConfig
     })
     .then((result: { url: string }) => {
       return result.url
