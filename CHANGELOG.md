@@ -5,6 +5,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0-v3-studio.1](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/compare/v3.0.0-v3-studio.0...v3.0.0-v3-studio.1) (2022-08-17)
+
+### Bug Fixes
+
+- use currentColor in Unsplash logo svg ([0c0b241](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/commit/0c0b241e4ffdcdabe77a4dd807919c6fb1c8195c))
+
 # [1.0.0-v3-studio.1](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/compare/v0.2.1...v1.0.0-v3-studio.1) (2022-08-17)
 
 - feat!: studio v3 version ([b96bc92](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/commit/b96bc920ddab5f8b6c7fc14992b8e85fe8781822))
