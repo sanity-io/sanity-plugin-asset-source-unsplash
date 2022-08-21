@@ -90,7 +90,7 @@
     "@types/react": "^17.0.27",
     "@types/styled-components": "^5.1.14",
     "colors": "^1.4.0",
-    "commitizen": "^3.1.2",
+    "commitizen": "^4.2.5",
     "coveralls": "^3.0.7",
     "cross-env": "^5.2.1",
     "cz-conventional-changelog": "^2.1.0",
