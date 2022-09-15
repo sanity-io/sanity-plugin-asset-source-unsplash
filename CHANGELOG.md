@@ -5,6 +5,13 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.0-v3-studio.4](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/compare/v3.0.0-v3-studio.3...v3.0.0-v3-studio.4) (2022-09-15)
+
+### Bug Fixes
+
+- **deps:** sanity 3.0.0-dev-preview.17 ([fd846ce](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/commit/fd846cec334a4a4e18a461e1cd2ae64271a36f54))
+- set apiVersion in useClient ([260e875](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/commit/260e8754a9171177726463681ef555d3faab7aaa))
+
 # [3.0.0-v3-studio.3](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/compare/v3.0.0-v3-studio.2...v3.0.0-v3-studio.3) (2022-08-17)
 
 ### Bug Fixes
