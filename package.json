@@ -111,7 +111,7 @@
   },
   "dependencies": {
     "@sanity/incompatible-plugin": "^1.0.0",
-    "@sanity/ui": "^0.37.9",
+    "@sanity/ui": "^0.38.0",
     "lodash": ">=4.17.4",
     "react-infinite-scroll-component": "^6.1.0",
     "react-photo-album": "^1.13.2",
