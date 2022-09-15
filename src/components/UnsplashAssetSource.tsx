@@ -24,7 +24,7 @@ const PHOTO_SPACING = 2
 const PHOTO_PADDING = 1 // offset the 1px border width
 
 export default function UnsplashAssetSource(props: AssetSourceComponentProps) {
-  const client = useClient()
+  const client = useClient({ apiVersion: '2022-09-01' })
   return <UnsplashAssetSourceInternal {...props} client={client} />
 }
 
