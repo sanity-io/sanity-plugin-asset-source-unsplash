@@ -2,6 +2,8 @@ import Unsplash from './components/UnsplashAssetSource'
 import Icon from './components/Icon'
 import { createPlugin, AssetSource } from 'sanity'
 
+export type { UnsplashPhoto, Asset, AssetDocument } from './types'
+
 export const unsplashAssetSource: AssetSource = {
   name: 'unsplash',
   title: 'Unsplash',
