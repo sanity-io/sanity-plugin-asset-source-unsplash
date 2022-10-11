@@ -5,6 +5,13 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.0-v3-studio.7](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/compare/v3.0.0-v3-studio.6...v3.0.0-v3-studio.7) (2022-10-11)
+
+### Bug Fixes
+
+- styled-components is a peer dep ([d2051e2](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/commit/d2051e27ac37ae8b3a5295b76a098aa3a897e0b1))
+- use the same `@sanity/ui` as `dev-preview` ([156970d](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/commit/156970d2f244a48e20a9e0712ed38a6dbafdb500))
+
 ## [3.0.0-v3-studio.6](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/compare/v3.0.0-v3-studio.5...v3.0.0-v3-studio.6) (2022-10-07)
 
 ### Bug Fixes
