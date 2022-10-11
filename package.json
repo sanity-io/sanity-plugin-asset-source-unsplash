@@ -114,7 +114,7 @@
     "lodash": "^4.17.21",
     "react-infinite-scroll-component": "^6.1.0",
     "react-photo-album": "^1.16.1",
-    "rxjs": "^6.5.2"
+    "rxjs": "^6.6.7"
   },
   "sanityExchangeUrl": "https://www.sanity.io/plugins/sanity-plugin-asset-source-unsplash"
 }
