@@ -64,7 +64,8 @@
   "peerDependencies": {
     "react": "^18",
     "react-dom": "^18",
-    "sanity": "dev-preview"
+    "sanity": "dev-preview",
+    "styled-components": "^5.2"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.1.2",
@@ -101,6 +102,7 @@
     "rimraf": "^3.0.2",
     "sanity": "3.0.0-dev-preview.21",
     "shelljs": "^0.8.3",
+    "styled-components": "^5.3.6",
     "ts-node": "^10.7.0",
     "tslint-config-prettier": "^1.15.0",
     "tslint-config-standard": "^8.0.1",
@@ -112,8 +114,7 @@
     "lodash": "^4.17.21",
     "react-infinite-scroll-component": "^6.1.0",
     "react-photo-album": "^1.16.1",
-    "rxjs": "^6.5.2",
-    "styled-components": "^5.2.0"
+    "rxjs": "^6.5.2"
   },
   "sanityExchangeUrl": "https://www.sanity.io/plugins/sanity-plugin-asset-source-unsplash"
 }
