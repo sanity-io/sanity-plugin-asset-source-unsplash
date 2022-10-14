@@ -64,7 +64,7 @@
   "peerDependencies": {
     "react": "^18",
     "react-dom": "^18",
-    "sanity": "dev-preview",
+    "sanity": "purple-unicorn-starter",
     "styled-components": "^5.2"
   },
   "devDependencies": {
@@ -100,7 +100,7 @@
     "react-dom": "^18.0.0",
     "replace-in-file": "^3.4.2",
     "rimraf": "^3.0.2",
-    "sanity": "3.0.0-dev-preview.21",
+    "sanity": "3.0.0-purple-unicorn-starter.43",
     "shelljs": "^0.8.3",
     "styled-components": "^5.3.6",
     "ts-node": "^10.7.0",
@@ -110,7 +110,7 @@
   },
   "dependencies": {
     "@sanity/incompatible-plugin": "^1.0.4",
-    "@sanity/ui": "0.38.3-next.30",
+    "@sanity/ui": "1.0.0-beta.29",
     "lodash": "^4.17.21",
     "react-infinite-scroll-component": "^6.1.0",
     "react-photo-album": "^1.16.1",
