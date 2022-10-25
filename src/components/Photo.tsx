@@ -1,6 +1,6 @@
 import { Text, useTheme } from '@sanity/ui'
 import React, { useCallback, useEffect, useRef } from 'react'
-import { UnsplashPhoto } from 'src/types'
+import { UnsplashPhoto } from '../types'
 import { CreditLine, CreditLineLink, Root } from './Photo.styled'
 
 type Props = {

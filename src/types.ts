@@ -1,3 +1,6 @@
+/**
+ * @public
+ */
 export interface Asset {
   kind: 'url' | 'base64' | 'file' | 'assetDocumentId'
   value: string | File
@@ -15,6 +18,9 @@ export interface Asset {
   }
 }
 
+/**
+ * @public
+ */
 export interface AssetDocument {
   _id: string
   label?: string
@@ -29,6 +35,9 @@ export interface AssetDocument {
   originalFilename?: string
 }
 
+/**
+ * @public
+ */
 export interface UnsplashPhoto {
   id: string
   width: number

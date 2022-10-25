@@ -1,5 +1,13 @@
 {
   "compilerOptions": {
+    "useDefineForClassFields": true,
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "allowJs": false,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "outDir": "lib",
+    "noImplicitAny": true,
     "jsx": "preserve",
     "moduleResolution": "node",
     "target": "esnext",
@@ -12,16 +20,8 @@
     "downlevelIteration": true,
     "declaration": true,
     "allowSyntheticDefaultImports": true,
-    "outDir": "lib",
-    "baseUrl": ".",
     "checkJs": false,
-    "lib": ["es2015", "es2016", "es2017", "es2020", "dom"],
-    "strict": true,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-    "noImplicitAny": false,
-    "paths": {},
-    "allowJs": true
+    "rootDir": "src"
   },
-  "include": ["src", "test", "node_modules/microbundle/index.d.ts"]
+  "include": ["./src"]
 }

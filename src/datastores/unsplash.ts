@@ -1,6 +1,6 @@
 import { defer, concat, BehaviorSubject, Observable } from 'rxjs'
 import { debounceTime, switchMap, map, distinctUntilChanged, withLatestFrom } from 'rxjs/operators'
-import { UnsplashPhoto } from 'src/types'
+import { UnsplashPhoto } from '../types'
 import { SanityClient } from '@sanity/client'
 
 type SearchSubject = BehaviorSubject<string>
@@ -12,14 +12,15 @@ const fetchSearch = (
   page: number,
   perPage: number
 ): Observable<any> =>
-  defer(() =>
-    client.observable.request({
-      url: `/addons/unsplash/search/photos?query=${encodeURIComponent(
-        query
-      )}&page=${page}&per_page=${perPage}`,
-      withCredentials: true,
-      method: 'GET',
-    })
+  defer(
+    () =>
+      client.observable.request({
+        url: `/addons/unsplash/search/photos?query=${encodeURIComponent(
+          query
+        )}&page=${page}&per_page=${perPage}`,
+        withCredentials: true,
+        method: 'GET',
+      }) as any
   )
 
 const fetchList = (
@@ -28,12 +29,13 @@ const fetchList = (
   page: number,
   perPage: number
 ): Observable<any> =>
-  defer(() =>
-    client.observable.request({
-      url: `/addons/unsplash/photos?order_by=${type}&page=${page}&per_page=${perPage}`,
-      withCredentials: true,
-      method: 'GET',
-    })
+  defer(
+    () =>
+      client.observable.request({
+        url: `/addons/unsplash/photos?order_by=${type}&page=${page}&per_page=${perPage}`,
+        withCredentials: true,
+        method: 'GET',
+      }) as any
   )
 
 export function fetchDownloadUrl(client: SanityClient, photo: UnsplashPhoto): Promise<string> {

@@ -11,3 +11,4 @@ babel.config.js
 coverage
 *.md
 *.js
+package.config.ts
