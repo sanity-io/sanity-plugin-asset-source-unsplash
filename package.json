@@ -115,7 +115,7 @@
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-sourcemaps": "^0.4.2",
     "rollup-plugin-typescript2": "^0.25.2",
-    "rxjs": "^6.5.3",
+    "rxjs": "^7.5.7",
     "shelljs": "^0.8.3",
     "styled-components": "^5.2.0",
     "ts-jest": "^24",
