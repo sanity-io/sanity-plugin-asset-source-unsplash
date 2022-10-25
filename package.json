@@ -121,7 +121,7 @@
     "ts-jest": "^24",
     "ts-node": "^7.0.1",
     "tsconfig-paths-jest": "0.0.1",
-    "tslib": "^1.10.0",
+    "tslib": "^2.4.0",
     "tslint": "^5.20.1",
     "tslint-config-prettier": "^1.15.0",
     "tslint-config-standard": "^8.0.1",
