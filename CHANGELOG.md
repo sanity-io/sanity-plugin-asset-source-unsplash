@@ -5,6 +5,13 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.0-v3-studio.9](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/compare/v3.0.0-v3-studio.8...v3.0.0-v3-studio.9) (2022-10-25)
+
+### Bug Fixes
+
+- **deps:** update dependency rxjs to ^6.6.7 (v3) ([#21](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/issues/21)) ([0d323ec](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/commit/0d323ecdee947251ea187b91278a59fa01c9c273))
+- replace `parcel` with `@sanity/pkg-utils` ([46988fd](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/commit/46988fd04acf148b749b9b8d8e743405c10eff05))
+
 ## [3.0.0-v3-studio.8](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/compare/v3.0.0-v3-studio.7...v3.0.0-v3-studio.8) (2022-10-24)
 
 ### Bug Fixes
