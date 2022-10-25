@@ -107,7 +107,7 @@
     "react-dom": "^16.2",
     "react-hot-loader": "^4.12.15",
     "replace-in-file": "^3.4.2",
-    "rimraf": "^2.7.1",
+    "rimraf": "^3.0.2",
     "rollup": ">=1.26.3",
     "rollup-plugin-commonjs": "^9.3.4",
     "rollup-plugin-json": "^3.1.0",
