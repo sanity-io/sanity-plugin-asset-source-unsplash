@@ -1,6 +1,6 @@
 {
   "name": "sanity-plugin-asset-source-unsplash",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Use images from Unsplash.com in your Sanity Studio",
   "keywords": [
     "sanity",
