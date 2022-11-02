@@ -5,6 +5,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.0-v3-studio.11](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/compare/v3.0.0-v3-studio.10...v3.0.0-v3-studio.11) (2022-11-02)
+
+### Bug Fixes
+
+- compiled for sanity 3.0.0-rc.0 ([7d38147](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/commit/7d381479e1e126db165d914e6a3f0902f5ecc9b0))
+
 ## [3.0.0-v3-studio.10](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/compare/v3.0.0-v3-studio.9...v3.0.0-v3-studio.10) (2022-10-25)
 
 ### Bug Fixes
