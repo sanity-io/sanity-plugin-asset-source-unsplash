@@ -1,6 +1,6 @@
 import Unsplash from './components/UnsplashAssetSource'
 import Icon from './components/Icon'
-import { createPlugin, AssetSource } from 'sanity'
+import { definePlugin, AssetSource } from 'sanity'
 
 export type { UnsplashPhoto, Asset, AssetDocument } from './types'
 
@@ -17,7 +17,7 @@ export const unsplashAssetSource: AssetSource = {
 /**
  * @public
  */
-export const unsplashImageAsset = createPlugin({
+export const unsplashImageAsset = definePlugin({
   name: 'asset-source-unsplash-plugin',
 
   form: {

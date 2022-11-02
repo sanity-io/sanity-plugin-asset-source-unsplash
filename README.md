@@ -26,7 +26,7 @@ Add it as a plugin in sanity.config.ts (or .js):
 ```js
 import { unsplashImageAsset } from "sanity-plugin-asset-source-unsplash";
 
-export default createConfig({
+export default defineConfig({
   // ...
   plugins: [
     unsplashImageAsset(),
@@ -44,7 +44,7 @@ If you need to configure when Unsplash should be available as an asset source, f
 ```js
 import { unsplashImageAsset, unsplashAssetSource } from "sanity-plugin-asset-source-unsplash";
 
-export default createConfig({
+export default defineConfig({
   // ...
   plugins: [
     unsplashImageAsset(),
@@ -233,7 +233,7 @@ export default createConfig({
 
 MIT-licensed. See LICENSE.
 
-## Develop & Test
+## Develop & test
 
 This plugin uses [@sanity/plugin-kit](https://github.com/sanity-io/plugin-kit)
 with default configuration for build & watch scripts.
@@ -241,4 +241,9 @@ with default configuration for build & watch scripts.
 See [Testing a plugin in Sanity Studio](https://github.com/sanity-io/plugin-kit#testing-a-plugin-in-sanity-studio)
 on how to run this plugin with hotreload in the studio.
 
+### Release new version
 
+Run ["CI & Release" workflow](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/actions/workflows/main.yml).
+Make sure to select the main branch and check "Release new version".
+
+Semantic release will only release on configured branches, so it is safe to run release on any branch.
