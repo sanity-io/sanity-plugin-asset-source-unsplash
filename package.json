@@ -1,6 +1,6 @@
 {
   "name": "@biblioteksentralen/sanity-plugin-asset-source-unsplash",
-  "version": "0.2.2",
+  "version": "0.2.4-beta.1",
   "description": "Use images from Unsplash.com in your Sanity Studio",
   "keywords": [
     "sanity",
@@ -74,8 +74,8 @@
     ]
   },
   "peerDependencies": {
-    "@sanity/base": ">=2.13.0",
-    "@sanity/components": "^2.13.0",
+    "@sanity/base": "^2.35.0",
+    "@sanity/components": "^2.14.0",
     "lodash": ">=4.17.4",
     "react": ">=16.14.0",
     "react-dom": ">=16.2",
@@ -85,8 +85,8 @@
   "devDependencies": {
     "@commitlint/cli": "^7.6.1",
     "@commitlint/config-conventional": "^7.6.0",
-    "@sanity/base": "^2.21.5",
-    "@sanity/components": "^2.13.0",
+    "@sanity/base": "^2.35.0",
+    "@sanity/components": "^2.14.0",
     "@types/jest": "^23.3.2",
     "@types/lodash": "^4.14.149",
     "@types/node": "^10.17.4",
@@ -134,7 +134,7 @@
     "typescript": "^3.8.0"
   },
   "dependencies": {
-    "@sanity/ui": "^0.36.12",
+    "@sanity/ui": "^0.38.2",
     "react-infinite-scroll-component": "^6.1.0",
     "react-photo-album": "1.10.2"
   }
