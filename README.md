@@ -1,10 +1,7 @@
 # Sanity Asset Source Plugin: Unsplash
 
-> **NOTE**
->
-> This is the **Sanity Studio v3 version** of sanity-plugin-asset-source-unsplash.
->
-> For the v2 version, please refer to the [v2-branch](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash).
+> This is a **Sanity Studio v3** plugin.
+> For the v2 version, please refer to the [v2-branch](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/tree/studio-v2).
 
 ## What is it?
 Search for photos on Unsplash and add them to your project right inside Sanity Studio.
@@ -13,11 +10,11 @@ Search for photos on Unsplash and add them to your project right inside Sanity S
 
 ## Installation
 
-`npm install --save sanity-plugin-asset-source-unsplash@studio-v3`
+`npm install --save sanity-plugin-asset-source-unsplash`
 
 or
 
-`yarn add sanity-plugin-asset-source-unsplash@studio-v3`
+`yarn add sanity-plugin-asset-source-unsplash`
 
 ## Usage
 

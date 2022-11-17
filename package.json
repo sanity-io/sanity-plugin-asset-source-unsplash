@@ -106,7 +106,7 @@
   "peerDependencies": {
     "react": "^18",
     "react-dom": "^18",
-    "sanity": "dev-preview || 3.0.0-rc.0",
+    "sanity": "dev-preview || 3.0.0-rc.2",
     "styled-components": "^5.2"
   },
   "engines": {
