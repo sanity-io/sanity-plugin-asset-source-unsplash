@@ -1,21 +1,15 @@
 import React from 'react'
 import PhotoAlbum from 'react-photo-album'
-import { flatten } from 'lodash'
+import flatten from 'lodash/flatten'
 import { BehaviorSubject, Subscription } from 'rxjs'
-import { Asset, AssetDocument, SanityDocument, UnsplashPhoto } from '../types'
+import { UnsplashPhoto } from '../types'
 import Photo from './Photo'
 import { fetchDownloadUrl, search } from '../datastores/unsplash'
 import { Card, Dialog, Flex, Spinner, Stack, Text, TextInput } from '@sanity/ui'
 import { Search } from './UnsplashAssetSource.styled'
 import InfiniteScroll from 'react-infinite-scroll-component'
-
-type Props = {
-  onSelect: (assets: Asset[]) => void
-  onClose: () => void
-  selectedAssets?: AssetDocument[]
-  selectionType: 'single' | 'multiple'
-  document?: SanityDocument
-}
+import { useClient, AssetSourceComponentProps, AssetFromSource } from 'sanity'
+import { SanityClient } from '@sanity/client'
 
 type State = {
   query: string
@@ -29,9 +23,17 @@ const RESULTS_PER_PAGE = 42
 const PHOTO_SPACING = 2
 const PHOTO_PADDING = 1 // offset the 1px border width
 
-export default class UnsplashAssetSource extends React.Component<Props, State> {
+export default function UnsplashAssetSource(props: AssetSourceComponentProps) {
+  const client = useClient({ apiVersion: '2022-09-01' })
+  return <UnsplashAssetSourceInternal {...props} client={client} />
+}
+
+class UnsplashAssetSourceInternal extends React.Component<
+  AssetSourceComponentProps & { client: SanityClient },
+  State
+> {
   static defaultProps = {
-    selectedAssets: undefined
+    selectedAssets: undefined,
   }
 
   state = {
@@ -39,7 +41,7 @@ export default class UnsplashAssetSource extends React.Component<Props, State> {
     query: '',
     page: 1,
     searchResults: [[]],
-    isLoading: true
+    isLoading: true,
   }
 
   searchSubscription: Subscription | null = null
@@ -49,17 +51,17 @@ export default class UnsplashAssetSource extends React.Component<Props, State> {
 
   componentDidMount() {
     this.searchSubscription = search(
+      this.props.client,
       this.searchSubject$,
       this.pageSubject$,
       RESULTS_PER_PAGE
     ).subscribe({
       next: (results: UnsplashPhoto[]) => {
-        const searchResults = [...this.state.searchResults, results]
-        this.setState({
-          searchResults,
-          isLoading: false
-        })
-      }
+        this.setState((prev) => ({
+          searchResults: [...prev.searchResults, results],
+          isLoading: false,
+        }))
+      },
     })
   }
 
@@ -71,20 +73,21 @@ export default class UnsplashAssetSource extends React.Component<Props, State> {
 
   handleSelect = (photo: UnsplashPhoto) => {
     this.setState({ isLoading: true })
-    return fetchDownloadUrl(photo).then(downloadUrl => {
+    return fetchDownloadUrl(this.props.client, photo).then((downloadUrl) => {
       const description = photo.description || undefined
-      const asset: Asset = {
+      const asset: AssetFromSource = {
         kind: 'url',
         value: downloadUrl,
         assetDocumentProps: {
+          _type: 'sanity.imageAsset',
           source: {
             name: 'unsplash',
             id: photo.id,
-            url: photo.links.html
+            url: photo.links.html,
           },
           description,
-          creditLine: `${photo.user.name} by Unsplash`
-        }
+          creditLine: `${photo.user.name} by Unsplash`,
+        } as any,
       }
       this.props.onSelect([asset])
     })
@@ -102,6 +105,7 @@ export default class UnsplashAssetSource extends React.Component<Props, State> {
   }
 
   handleScollerLoadMore = () => {
+    // eslint-disable-next-line react/no-access-state-in-setstate
     const nextPage = this.state.page + 1
     this.setState({ page: nextPage, isLoading: true })
     this.pageSubject$.next(nextPage)
@@ -111,15 +115,15 @@ export default class UnsplashAssetSource extends React.Component<Props, State> {
   handleKeyDown = (event: any) => {
     const { cursor } = this.state
     if ((event.keyCode === 38 || event.keyCode === 37) && cursor > 0) {
-      this.setState(prevState => ({
-        cursor: prevState.cursor - 1
+      this.setState((prevState) => ({
+        cursor: prevState.cursor - 1,
       }))
     } else if (
       (event.keyCode === 40 || event.keyCode === 39) &&
       cursor < this.getPhotos().length - 1
     ) {
-      this.setState(prevState => ({
-        cursor: prevState.cursor + 1
+      this.setState((prevState) => ({
+        cursor: prevState.cursor + 1,
       }))
     }
   }
@@ -137,7 +141,7 @@ export default class UnsplashAssetSource extends React.Component<Props, State> {
     const { photo, layout } = props
     const active =
       this.getPhotos().findIndex((result: UnsplashPhoto) => result.id === photo.data.id) ===
-      this.state.cursor || false
+        this.state.cursor || false
     return (
       <Photo
         onClick={this.handleSelect.bind(photo.data)}
@@ -156,8 +160,8 @@ export default class UnsplashAssetSource extends React.Component<Props, State> {
 
     return (
       <Dialog
-        id='unsplash-asset-source'
-        header='Select image from Unsplash'
+        id="unsplash-asset-source"
+        header="Select image from Unsplash"
         onClose={this.handleClose}
         open
         width={4}
@@ -165,12 +169,12 @@ export default class UnsplashAssetSource extends React.Component<Props, State> {
         <Stack space={3} padding={4}>
           <Card>
             <Search space={3}>
-              <Text size={1} weight='semibold'>
+              <Text size={1} weight="semibold">
                 Search Unsplash
               </Text>
               <TextInput
-                label='Search Unsplash.com'
-                placeholder='Topics or colors'
+                label="Search Unsplash.com"
+                placeholder="Topics or colors"
                 value={query}
                 onChange={this.handleSearchTermChanged}
               />
@@ -185,11 +189,11 @@ export default class UnsplashAssetSource extends React.Component<Props, State> {
             dataLength={this.getPhotos().length} // This is important field to render the next data
             next={this.handleScollerLoadMore}
             // scrollableTarget="unsplash-scroller"
-            hasMore={true}
+            hasMore
             scrollThreshold={0.99}
-            height='60vh'
+            height="60vh"
             loader={
-              <Flex align='center' justify='center' padding={3}>
+              <Flex align="center" justify="center" padding={3}>
                 <Spinner muted />
               </Flex>
             }
@@ -199,23 +203,30 @@ export default class UnsplashAssetSource extends React.Component<Props, State> {
               </Text>
             }
           >
-            {searchResults.filter((photos) => photos.length > 0).map((photos: UnsplashPhoto[], index) =>
-              (
+            {searchResults
+              .filter((photos) => photos.length > 0)
+              .map((photos: UnsplashPhoto[], index) => (
                 <PhotoAlbum
                   key={`gallery-${query || 'popular'}-${index}`}
-                  layout='rows'
+                  layout="rows"
                   spacing={PHOTO_SPACING}
                   padding={PHOTO_PADDING}
-                  targetRowHeight={(width) => width < 300 ? 150 : width < 600 ? 200 : 300}
+                  targetRowHeight={(width) => {
+                    if (width < 300) return 150
+                    else if (width < 600) return 200
+                    return 300
+                  }}
                   photos={photos.map((photo: UnsplashPhoto) => ({
                     src: photo.urls.small,
                     width: photo.width,
                     height: photo.height,
                     key: photo.id,
-                    data: photo
+                    data: photo,
                   }))}
                   renderPhoto={this.renderImage}
-                  componentsProps={{ containerProps: { style: { marginBottom: `${PHOTO_SPACING}px` } } }}
+                  componentsProps={{
+                    containerProps: { style: { marginBottom: `${PHOTO_SPACING}px` } },
+                  }}
                 />
               ))}
           </InfiniteScroll>

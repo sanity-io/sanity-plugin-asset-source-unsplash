@@ -1,44 +1,67 @@
 # Sanity Asset Source Plugin: Unsplash
+
+> **NOTE**
+>
+> This is the **Sanity Studio v3 version** of sanity-plugin-asset-source-unsplash.
+>
+> For the v2 version, please refer to the [v2-branch](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash).
+
+## What is it?
 Search for photos on Unsplash and add them to your project right inside Sanity Studio.
 
-
+![Unsplash image selector](assets/unsplash-selector.png)
 
 ## Installation
 
-`sanity install asset-source-unsplash`
+`npm install --save sanity-plugin-asset-source-unsplash@studio-v3`
 
-## Part name
+or
 
-If you need to do customize available asset sources, the plugin part name for this asset source is:
+`yarn add sanity-plugin-asset-source-unsplash@studio-v3`
 
-`part:sanity-plugin-asset-source-unsplash/image-asset-source`
+## Usage
 
-## Developing on this module
+Add it as a plugin in sanity.config.ts (or .js):
 
-To simulate using your development version as a real module inside a studio, you can do the following:
+```js
+import { unsplashImageAsset } from "sanity-plugin-asset-source-unsplash";
 
-* Run `npm install && npm link` from the root of this repository.
-* Run `npm run watch` to start developing and build the module when changes are made.
+export default defineConfig({
+  // ...
+  plugins: [
+    unsplashImageAsset(),
+  ] 
+})
+```
 
-#### Displaying your development version inside a studio
+This will add [unsplashAssetSource](src/index.ts) to all image-fields in Sanity Studio
 
-**With the mono-repo's `test-studio`:**
+### Manually configure asset sources
 
-  * Bootstrap the monorepo: `npm run bootstrap`
-  * Add `sanity-plugin-asset-source-unsplash` with the current version number to `package.json` in the `test-studio` root folder (but don't run `npm install` afterwards)
-  * Run `npm link sanity-plugin-asset-source-unsplash` inside the mono-repo's root.
-  * Add `asset-source-unsplash` to the list of the studios plugins in `sanity.json`.
-  * Restart the `test-studio`
+If you need to configure when Unsplash should be available as an asset source, filter it out as needed in
+`formbuilder.image.assetSources`:
 
-**With a regular Sanity Studio:**
-  * Run `npm install`
-  * Add `sanity-plugin-asset-source-unsplash` with the current version number to `package.json`.
-  * Run `npm link sanity-plugin-asset-source-unsplash`
-  * Add `asset-source-unsplash` to the list of the studios plugins in `sanity.json`.
-  * Start the studio
+```js
+import { unsplashImageAsset, unsplashAssetSource } from "sanity-plugin-asset-source-unsplash";
 
-When you are done and have published your new version, you can run `npm unlink` inside this repo, and `npm unlink sanity-plugin-asset-source-unsplash` inside the mono-repo or studio to get back to the normal state. Then run `npm run bootstrap` for the mono-repo or `npm install` inside the regular studio to use the published version.
-
+export default defineConfig({
+  // ...
+  plugins: [
+    unsplashImageAsset(),
+  ],
+  formBuilder: {
+    image: {
+      assetSources: (previousAssetSources, {schema}) => {
+        if (schema.name === 'movie-image') {
+          // remove unsplash from movie-image types
+          return previousAssetSources.filter(assetSource => assetSource !== unsplashAssetSource)
+        }
+        return previousAssetSources
+      },
+    },
+  },
+})
+```
 
 ## Example Unsplash API Photo result
 
@@ -206,5 +229,21 @@ When you are done and have published your new version, you can run `npm unlink` 
 * https://unsplash.com/documentation
 * https://www.sanity.io/docs/custom-asset-sources
 
+## License
 
+MIT-licensed. See LICENSE.
 
+## Develop & test
+
+This plugin uses [@sanity/plugin-kit](https://github.com/sanity-io/plugin-kit)
+with default configuration for build & watch scripts.
+
+See [Testing a plugin in Sanity Studio](https://github.com/sanity-io/plugin-kit#testing-a-plugin-in-sanity-studio)
+on how to run this plugin with hotreload in the studio.
+
+### Release new version
+
+Run ["CI & Release" workflow](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/actions/workflows/main.yml).
+Make sure to select the main branch and check "Release new version".
+
+Semantic release will only release on configured branches, so it is safe to run release on any branch.

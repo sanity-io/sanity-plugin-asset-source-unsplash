@@ -1,4 +1,7 @@
-export type Asset = {
+/**
+ * @public
+ */
+export interface Asset {
   kind: 'url' | 'base64' | 'file' | 'assetDocumentId'
   value: string | File
   assetDocumentProps?: {
@@ -15,7 +18,10 @@ export type Asset = {
   }
 }
 
-export type AssetDocument = {
+/**
+ * @public
+ */
+export interface AssetDocument {
   _id: string
   label?: string
   title?: string
@@ -29,14 +35,10 @@ export type AssetDocument = {
   originalFilename?: string
 }
 
-export type SanityDocument = {
-  _id: string
-  _rev?: string
-  _updatedAt?: string
-  [attribute: string]: any
-}
-
-export type UnsplashPhoto = {
+/**
+ * @public
+ */
+export interface UnsplashPhoto {
   id: string
   width: number
   height: number

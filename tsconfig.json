@@ -1,27 +1,24 @@
 {
   "compilerOptions": {
-    "jsx": "react",
+    "jsx": "preserve",
     "moduleResolution": "node",
-    "target": "es5",
+    "target": "esnext",
+    "module": "esnext",
     "esModuleInterop": true,
-    "module": "es2015",
-    "lib": ["es2015", "es2016", "es2017", "dom"],
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "strict": true,
-    "sourceMap": true,
+    "sourceMap": false,
+    "inlineSourceMap": false,
+    "downlevelIteration": true,
     "declaration": true,
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "declarationDir": "dist/types",
-    "outDir": "dist/lib",
-    "typeRoots": ["node_modules/@types"],
-    "baseUrl": ".",
-    "paths": {
-      "part:@sanity/base/client": [
-        "./node_modules/@sanity/client/lib/sanityClient.js"
-      ]
-    },
-    "skipLibCheck": true
+    "outDir": "lib",
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "checkJs": false,
+    "rootDir": "src"
   },
   "include": ["src/**/*"]
 }

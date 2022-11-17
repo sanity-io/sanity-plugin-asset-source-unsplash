@@ -1,5 +1,11 @@
-import { Card } from '@sanity/ui'
+import { Card, Theme } from '@sanity/ui'
 import styled from 'styled-components'
+
+type SanityTheme = Theme['sanity']
+
+interface Style {
+  studioTheme: SanityTheme
+}
 
 export const Root = styled.div`
   overflow: hidden;
@@ -9,7 +15,7 @@ export const Root = styled.div`
   background-size: cover;
   position: relative;
   outline: none !important;
-  border: 1px solid white;
+  border: ${({ studioTheme }: Style) => `1px solid ${studioTheme.color.card.enabled.border}`};
   box-sizing: content-box;
   user-drag: none;
 
@@ -31,8 +37,8 @@ export const CreditLineLink = styled.a`
 
 export const CreditLine = styled(Card)`
   ${({ theme }) => `
-     --creditline-fg: ${theme.sanity.color.base.bg};
-     --creditline-bg: ${theme.sanity.color.base.fg};
+     --creditline-fg: ${theme.sanity.color.card.enabled.fg};
+     --creditline-bg: ${theme.sanity.color.card.enabled.bg};
    `};
   user-drag: none;
   position: absolute;
