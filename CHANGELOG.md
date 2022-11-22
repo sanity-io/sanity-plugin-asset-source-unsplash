@@ -5,6 +5,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.5](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/compare/v0.2.4...v0.2.5) (2022-11-22)
+
+### Bug Fixes
+
+- **docs:** v2 install command ([d3f650d](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/commit/d3f650d17e9c6ed90fa4e49d49bbd77a1f349047))
+
 ## [0.2.4](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/compare/v0.2.3...v0.2.4) (2022-10-25)
 
 ### Bug Fixes
