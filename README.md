@@ -8,6 +8,17 @@ Search for photos on Unsplash and add them to your project right inside Sanity S
 
 `sanity install asset-source-unsplash@studio-v2`
 
+```sh
+yarn add sanity-plugin-asset-source-unsplash@studio-v2
+```
+
+Next, add `"asset-source-unsplash"` to `sanity.json` plugins array:
+```json
+"plugins": [
+  "asset-source-unsplash"
+]
+```
+
 ## Part name
 
 If you need to do customize available asset sources, the plugin part name for this asset source is:
