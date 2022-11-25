@@ -57,7 +57,7 @@
   },
   "dependencies": {
     "@sanity/incompatible-plugin": "^1.0.4",
-    "@sanity/ui": "1.0.0-beta.32",
+    "@sanity/ui": "^1.0.0",
     "lodash": "^4.17.21",
     "react-infinite-scroll-component": "^6.1.0",
     "react-photo-album": "^1.16.1",
@@ -95,7 +95,7 @@
     "react-dom": "^18",
     "replace-in-file": "^6.3.5",
     "rimraf": "^3.0.2",
-    "sanity": "3.0.0-rc.2",
+    "sanity": "^3.0.0",
     "shelljs": "^0.8.5",
     "styled-components": "^5.3.6",
     "ts-node": "^10.9.1",
@@ -106,7 +106,7 @@
   "peerDependencies": {
     "react": "^18",
     "react-dom": "^18",
-    "sanity": "dev-preview || 3.0.0-rc.2",
+    "sanity": "^3.0.0",
     "styled-components": "^5.2"
   },
   "engines": {
