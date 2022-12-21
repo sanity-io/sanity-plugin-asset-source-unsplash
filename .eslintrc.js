@@ -32,6 +32,7 @@ module.exports = {
     'react/jsx-no-bind': 0,
     'react/jsx-handler-names': 0,
     'react/no-array-index-key': 0,
+    'react/react-in-jsx-scope': 0,
   },
   settings: {
     'import/ignore': ['\\.css$', '.*node_modules.*', '.*:.*'],

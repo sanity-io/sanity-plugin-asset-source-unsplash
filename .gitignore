@@ -50,7 +50,6 @@ jspm_packages
 .cache
 
 # Compiled plugin
-lib
+dist
 
-docs
 
