@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 const Svg = styled.svg`
   transform: scale(0.8);
+  transform-origin: top;
 `
 
 export default function UnsplashIcon() {
