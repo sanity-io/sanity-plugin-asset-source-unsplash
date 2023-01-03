@@ -5,6 +5,13 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.2](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/compare/v1.0.1...v1.0.2) (2023-01-03)
+
+### Bug Fixes
+
+- **docs:** formBuilder.image.assetSource should be form.image.assetSource ([36991e6](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/commit/36991e69334c0d6e4c77efbe848df8e3cf1e7fef))
+- vertically center unsplash logo ([dfa2612](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/commit/dfa26120d994b98f861321a59e7466da28b70486))
+
 ## [1.0.1](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/compare/v1.0.0...v1.0.1) (2022-11-25)
 
 ### Bug Fixes
