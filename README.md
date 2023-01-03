@@ -36,7 +36,7 @@ This will add [unsplashAssetSource](src/index.ts) to all image-fields in Sanity 
 ### Manually configure asset sources
 
 If you need to configure when Unsplash should be available as an asset source, filter it out as needed in
-`formbuilder.image.assetSources`:
+`form.image.assetSources`:
 
 ```js
 import { unsplashImageAsset, unsplashAssetSource } from "sanity-plugin-asset-source-unsplash";
@@ -46,7 +46,7 @@ export default defineConfig({
   plugins: [
     unsplashImageAsset(),
   ],
-  formBuilder: {
+  form: {
     image: {
       assetSources: (previousAssetSources, {schema}) => {
         if (schema.name === 'movie-image') {
