@@ -5,6 +5,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.3](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/compare/v1.0.2...v1.0.3) (2023-01-04)
+
+### Bug Fixes
+
+- **deps:** applied npx @sanity/plugin-kit inject ([a2631da](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/commit/a2631daaa487f4bf51a78cff304373d76ebea186))
+
 ## [1.0.2](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/compare/v1.0.1...v1.0.2) (2023-01-03)
 
 ### Bug Fixes
