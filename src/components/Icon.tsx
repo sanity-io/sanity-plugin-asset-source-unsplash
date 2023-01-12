@@ -2,9 +2,9 @@ import React from 'react'
 
 export default function UnsplashIcon() {
   return (
-    <svg role="img" viewBox="-4 -4 28 28" width="1em" height="1em" fill="currentColor">
+    <svg role="img" viewBox="0 0 25 25" width="1em" height="1em" fill="currentColor">
       <title />
-      <path d="M7.5 6.75V0h9v6.75h-9zm9 3.75H24V24H0V10.5h7.5v6.75h9V10.5z" />
+      <path d="M9 9V4h7v5H9Zm7 3h5v9H4v-9h5v5h7v-5Z" />
     </svg>
   )
 }
