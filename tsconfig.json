@@ -18,7 +18,8 @@
     "skipLibCheck": true,
     "isolatedModules": true,
     "checkJs": false,
-    "rootDir": "src"
+    "rootDir": "src",
+    "types": ["vite/client"]
   },
   "include": ["src/**/*"]
 }

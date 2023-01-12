@@ -4,6 +4,7 @@
 > For the v2 version, please refer to the [v2-branch](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/tree/studio-v2).
 
 ## What is it?
+
 Search for photos on Unsplash and add them to your project right inside Sanity Studio.
 
 ![Unsplash image selector](assets/unsplash-selector.png)
@@ -21,13 +22,11 @@ or
 Add it as a plugin in sanity.config.ts (or .js):
 
 ```js
-import { unsplashImageAsset } from "sanity-plugin-asset-source-unsplash";
+import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash'
 
 export default defineConfig({
   // ...
-  plugins: [
-    unsplashImageAsset(),
-  ] 
+  plugins: [unsplashImageAsset()],
 })
 ```
 
@@ -39,19 +38,17 @@ If you need to configure when Unsplash should be available as an asset source, f
 `formbuilder.image.assetSources`:
 
 ```js
-import { unsplashImageAsset, unsplashAssetSource } from "sanity-plugin-asset-source-unsplash";
+import { unsplashImageAsset, unsplashAssetSource } from 'sanity-plugin-asset-source-unsplash'
 
 export default defineConfig({
   // ...
-  plugins: [
-    unsplashImageAsset(),
-  ],
+  plugins: [unsplashImageAsset()],
   formBuilder: {
     image: {
-      assetSources: (previousAssetSources, {schema}) => {
+      assetSources: (previousAssetSources, { schema }) => {
         if (schema.name === 'movie-image') {
           // remove unsplash from movie-image types
-          return previousAssetSources.filter(assetSource => assetSource !== unsplashAssetSource)
+          return previousAssetSources.filter((assetSource) => assetSource !== unsplashAssetSource)
         }
         return previousAssetSources
       },
@@ -122,7 +119,6 @@ export default defineConfig({
     "accepted_tos": true
   }
 }
-
 ```
 
 ## Example resulting asset document
@@ -223,8 +219,8 @@ export default defineConfig({
 
 ## Futher reading
 
-* https://unsplash.com/documentation
-* https://www.sanity.io/docs/custom-asset-sources
+- https://unsplash.com/documentation
+- https://www.sanity.io/docs/custom-asset-sources
 
 ## License
 

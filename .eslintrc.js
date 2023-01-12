@@ -9,6 +9,7 @@ module.exports = {
     'sanity/typescript',
     'plugin:prettier/recommended',
     'plugin:react-hooks/recommended',
+    'plugin:storybook/recommended',
   ],
   overrides: [
     {
