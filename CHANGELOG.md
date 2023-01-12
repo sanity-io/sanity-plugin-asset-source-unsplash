@@ -5,6 +5,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.5](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/compare/v1.0.4...v1.0.5) (2023-01-12)
+
+### Bug Fixes
+
+- **deps:** update dependency react-photo-album to v2 ([#68](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/issues/68)) ([4748ce0](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/commit/4748ce0507da4239377793c2b9621f3862cb3a5f))
+
 ## [1.0.4](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/compare/v1.0.3...v1.0.4) (2023-01-12)
 
 ### Bug Fixes
