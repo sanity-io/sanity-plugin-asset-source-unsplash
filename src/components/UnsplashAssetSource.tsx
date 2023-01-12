@@ -1,6 +1,5 @@
 import React from 'react'
 import PhotoAlbum from 'react-photo-album'
-import flatten from 'lodash/flatten'
 import { BehaviorSubject, Subscription } from 'rxjs'
 import { UnsplashPhoto } from '../types'
 import Photo from './Photo'
@@ -129,7 +128,7 @@ class UnsplashAssetSourceInternal extends React.Component<
   }
 
   getPhotos() {
-    return flatten(this.state.searchResults)
+    return this.state.searchResults.flat()
   }
 
   updateCursor = (photo: UnsplashPhoto) => {
