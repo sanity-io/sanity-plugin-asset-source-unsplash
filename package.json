@@ -59,7 +59,6 @@
   "dependencies": {
     "@sanity/incompatible-plugin": "^1.0.4",
     "@sanity/ui": "^1.0.0",
-    "lodash": "^4.17.21",
     "react-infinite-scroll-component": "^6.1.0",
     "react-photo-album": "^1.16.1",
     "rxjs": "^7.5.7"
@@ -70,7 +69,6 @@
     "@sanity/pkg-utils": "^2.1.0",
     "@sanity/plugin-kit": "^3.1.1",
     "@sanity/semantic-release-preset": "^2.0.2",
-    "@types/lodash": "^4.14.188",
     "@types/node": "^18.11.9",
     "@types/react": "^18.0.26",
     "@types/react-dom": "^18",
