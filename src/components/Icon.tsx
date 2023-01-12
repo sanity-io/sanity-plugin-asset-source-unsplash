@@ -1,3 +1,5 @@
+import React from 'react'
+
 export default function UnsplashIcon() {
   return (
     <svg role="img" viewBox="-4 -4 28 28" width="1em" height="1em" fill="currentColor">
