@@ -5,6 +5,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.6](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/compare/v1.0.5...v1.0.6) (2023-01-12)
+
+### Bug Fixes
+
+- redraw unsplash logo to match the `@sanity/icons` grid ([5997b28](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/commit/5997b2814af4c6371d3525b3210719d8293f7c7d))
+
 ## [1.0.5](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/compare/v1.0.4...v1.0.5) (2023-01-12)
 
 ### Bug Fixes
