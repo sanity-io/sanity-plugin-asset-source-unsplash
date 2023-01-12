@@ -5,6 +5,14 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.4](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/compare/v1.0.3...v1.0.4) (2023-01-12)
+
+### Bug Fixes
+
+- adjust unsplash logo negative space with `viewBox` instead of CSS `transform: scale` ([d10e532](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/commit/d10e5324e3b8eef5eebd8fe03326bb7f748c9cb3))
+- better deduping of shared dependencies ([6b9eff7](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/commit/6b9eff77baf95903541526ad4df8f36086d46754))
+- replace `lodash/flatten` with native `Array.flat` ([90f8c07](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/commit/90f8c07038e9f7f0f3ef566b826be9b84e3717c4))
+
 ## [1.0.3](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/compare/v1.0.2...v1.0.3) (2023-01-04)
 
 ### Bug Fixes
