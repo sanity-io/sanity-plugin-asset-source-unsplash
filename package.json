@@ -65,8 +65,8 @@
     "rxjs": "^7"
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.4.1",
-    "@commitlint/config-conventional": "^17.4.0",
+    "@commitlint/cli": "^17.4.2",
+    "@commitlint/config-conventional": "^17.4.2",
     "@sanity/pkg-utils": "^2.1.1",
     "@sanity/plugin-kit": "^3.1.2",
     "@sanity/semantic-release-preset": "^3.0.2",
@@ -96,7 +96,7 @@
     "react-is": "^18.2.0",
     "replace-in-file": "^6.3.5",
     "rimraf": "^3.0.2",
-    "sanity": "^3.2.0",
+    "sanity": "^3.2.1",
     "shelljs": "^0.8.5",
     "styled-components": "^5.3.6",
     "ts-node": "^10.9.1",
