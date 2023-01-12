@@ -59,10 +59,10 @@
   },
   "dependencies": {
     "@sanity/incompatible-plugin": "^1.0.4",
-    "@sanity/ui": "^1.0.0",
+    "@sanity/ui": "^1.0.12",
     "react-infinite-scroll-component": "^6.1.0",
     "react-photo-album": "^1.16.1",
-    "rxjs": "^7.5.7"
+    "rxjs": "^7.8.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.2.0",
