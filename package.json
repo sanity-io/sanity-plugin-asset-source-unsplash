@@ -95,7 +95,7 @@
     "react-dom": "^18.2.0",
     "react-is": "^18.2.0",
     "replace-in-file": "^6.3.5",
-    "rimraf": "^3.0.2",
+    "rimraf": "^4.0.4",
     "sanity": "^3.2.1",
     "shelljs": "^0.8.5",
     "styled-components": "^5.3.6",
