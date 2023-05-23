@@ -5,6 +5,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.0](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/compare/v1.0.7...v1.1.0) (2023-05-23)
+
+### Features
+
+- improve ESM support ([284d24e](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/commit/284d24e4847e45ad7daaa932e4e7cbc961033995))
+
 ## [1.0.7](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/compare/v1.0.6...v1.0.7) (2023-05-23)
 
 ### Bug Fixes
