@@ -1,5 +1,5 @@
 import { Text, useTheme } from '@sanity/ui'
-import React, { useCallback, useEffect, useRef } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import { UnsplashPhoto } from '../types'
 import { CreditLine, CreditLineLink, Root } from './Photo.styled'
 
@@ -17,8 +17,6 @@ const UTM_SOURCE = 'sanity-plugin-asset-source-unsplash'
 
 export default function Photo(props: Props) {
   const { onClick, data, onKeyDown, onFocus, active, width, height } = props
-  const rootElm = useRef<HTMLDivElement>(null)
-  const prevActive = useRef<boolean>(false)
 
   const handleClick = useCallback(() => {
     onClick(data)
@@ -50,14 +48,10 @@ export default function Photo(props: Props) {
   }, [onFocus, data])
 
   useEffect(() => {
-    if (!prevActive.current && active && rootElm.current) {
-      rootElm.current.focus()
+    if (active) {
       onFocus(data)
     }
-    prevActive.current = active
-    // data changing alone should not re-trigger effect
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [active])
+  }, [active, data, onFocus])
 
   const src = data.urls.small
   const userName = data.user.name
@@ -65,7 +59,6 @@ export default function Photo(props: Props) {
   const theme = useTheme().sanity
   return (
     <Root
-      ref={rootElm}
       studioTheme={theme}
       title={`Select image by ${userName} from Unsplash`}
       tabIndex={0}
