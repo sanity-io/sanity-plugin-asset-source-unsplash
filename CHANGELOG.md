@@ -5,6 +5,13 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.7](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/compare/v1.0.6...v1.0.7) (2023-05-23)
+
+### Bug Fixes
+
+- **deps:** update dependencies (non-major) ([#83](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/issues/83)) ([f0d8e9a](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/commit/f0d8e9a7501a74160c945b8aba260ab31562c2f4))
+- don't steal focus from the search input ([6810a7c](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/commit/6810a7c89609bd33dda20e728dde1b7cc87c8df7))
+
 ## [1.0.6](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/compare/v1.0.5...v1.0.6) (2023-01-12)
 
 ### Bug Fixes
