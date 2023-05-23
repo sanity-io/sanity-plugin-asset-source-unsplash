@@ -1,8 +1,9 @@
-import Unsplash from './components/UnsplashAssetSource'
-import Icon from './components/Icon'
-import { definePlugin, AssetSource } from 'sanity'
+import { AssetSource, definePlugin } from 'sanity'
 
-export type { UnsplashPhoto, Asset, AssetDocument } from './types'
+import Icon from './components/Icon'
+import Unsplash from './components/UnsplashAssetSource'
+
+export type { Asset, AssetDocument, UnsplashPhoto } from './types'
 
 /**
  * @public

@@ -1,40 +1,45 @@
 module.exports = {
-  env: {
-    browser: true,
-    node: false,
-    jest: true,
-  },
-  extends: [
-    'sanity/react', // must come before sanity/typescript
-    'sanity/typescript',
-    'plugin:prettier/recommended',
-    'plugin:react-hooks/recommended',
-  ],
-  overrides: [
-    {
-      files: ['*.{ts,tsx}'],
-    },
-  ],
+  root: true,
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
     },
-    project: './tsconfig.json',
   },
-  plugins: ['prettier'],
+  extends: [
+    'react-app',
+    'sanity/react', // must come before sanity/typescript
+    'sanity/typescript',
+    'plugin:react-hooks/recommended',
+    'plugin:prettier/recommended',
+  ],
+  overrides: [
+    {
+      files: ['*.{ts,tsx}'],
+      rules: {
+        'no-undef': 0,
+      },
+    },
+  ],
+  plugins: ['simple-import-sort', 'prettier'],
   rules: {
     '@typescript-eslint/explicit-function-return-type': 0,
+    '@typescript-eslint/explicit-module-boundary-types': 0,
     '@typescript-eslint/no-shadow': 'error',
     '@typescript-eslint/no-unused-vars': 1,
+    'simple-import-sort/imports': 'warn',
+    'simple-import-sort/exports': 'warn',
+    'no-unused-vars': 0,
     'no-shadow': 'off',
     'react/display-name': 0,
     'react/jsx-no-bind': 0,
     'react/jsx-handler-names': 0,
-    'react/no-array-index-key': 0,
+    camelcase: 0,
+    'symbol-description': 0,
+    'no-void': 0,
   },
   settings: {
-    'import/ignore': ['\\.css$', '.*node_modules.*', '.*:.*'],
+    'import/ignore': ['\\.css$', '.*node_modules.*'],
     'import/resolver': {
       node: {
         paths: ['src'],

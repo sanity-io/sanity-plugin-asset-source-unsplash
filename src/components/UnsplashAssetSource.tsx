@@ -1,14 +1,15 @@
+import { SanityClient } from '@sanity/client'
+import { Card, Dialog, Flex, Spinner, Stack, Text, TextInput } from '@sanity/ui'
 import React from 'react'
+import InfiniteScroll from 'react-infinite-scroll-component'
 import PhotoAlbum from 'react-photo-album'
 import { BehaviorSubject, Subscription } from 'rxjs'
+import { AssetFromSource, AssetSourceComponentProps, useClient } from 'sanity'
+
+import { fetchDownloadUrl, search } from '../datastores/unsplash'
 import { UnsplashPhoto } from '../types'
 import Photo from './Photo'
-import { fetchDownloadUrl, search } from '../datastores/unsplash'
-import { Card, Dialog, Flex, Spinner, Stack, Text, TextInput } from '@sanity/ui'
 import { Search } from './UnsplashAssetSource.styled'
-import InfiniteScroll from 'react-infinite-scroll-component'
-import { useClient, AssetSourceComponentProps, AssetFromSource } from 'sanity'
-import { SanityClient } from '@sanity/client'
 
 type State = {
   query: string
@@ -206,6 +207,7 @@ class UnsplashAssetSourceInternal extends React.Component<
               .filter((photos) => photos.length > 0)
               .map((photos: UnsplashPhoto[], index) => (
                 <PhotoAlbum
+                  // eslint-disable-next-line react/no-array-index-key
                   key={`gallery-${query || 'popular'}-${index}`}
                   layout="rows"
                   spacing={PHOTO_SPACING}

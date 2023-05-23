@@ -1,7 +1,8 @@
-import { defer, concat, BehaviorSubject, Observable } from 'rxjs'
-import { debounceTime, switchMap, map, distinctUntilChanged, withLatestFrom } from 'rxjs/operators'
-import { UnsplashPhoto } from '../types'
 import { SanityClient } from '@sanity/client'
+import { BehaviorSubject, concat, defer, Observable } from 'rxjs'
+import { debounceTime, distinctUntilChanged, map, switchMap, withLatestFrom } from 'rxjs/operators'
+
+import { UnsplashPhoto } from '../types'
 
 type SearchSubject = BehaviorSubject<string>
 type PageSubject = BehaviorSubject<number>

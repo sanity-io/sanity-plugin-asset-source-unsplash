@@ -60,3 +60,4 @@ yalc.lock
 lib
 
 docs
+tsconfig.tsbuildinfo
