@@ -11,24 +11,24 @@ const fetchSearch = (
   client: SanityClient,
   query: string,
   page: number,
-  perPage: number
+  perPage: number,
 ): Observable<any> =>
   defer(
     () =>
       client.observable.request({
         url: `/addons/unsplash/search/photos?query=${encodeURIComponent(
-          query
+          query,
         )}&page=${page}&per_page=${perPage}`,
         withCredentials: true,
         method: 'GET',
-      }) as any
+      }) as any,
   )
 
 const fetchList = (
   client: SanityClient,
   type: string,
   page: number,
-  perPage: number
+  perPage: number,
 ): Observable<any> =>
   defer(
     () =>
@@ -36,13 +36,13 @@ const fetchList = (
         url: `/addons/unsplash/photos?order_by=${type}&page=${page}&per_page=${perPage}`,
         withCredentials: true,
         method: 'GET',
-      }) as any
+      }) as any,
   )
 
 export function fetchDownloadUrl(client: SanityClient, photo: UnsplashPhoto): Promise<string> {
   const downloadUrl = photo.links.download_location.replace(
     'https://api.unsplash.com',
-    '/addons/unsplash'
+    '/addons/unsplash',
   )
   return client
     .request({
@@ -59,7 +59,7 @@ export const search = (
   client: SanityClient,
   query: SearchSubject,
   page: PageSubject,
-  resultsPerPage: number
+  resultsPerPage: number,
 ): Observable<any> => {
   return concat(
     query.pipe(
@@ -70,11 +70,11 @@ export const search = (
         if (q) {
           return fetchSearch(client, q, p, resultsPerPage).pipe(
             distinctUntilChanged(),
-            map((result) => result.results)
+            map((result) => result.results),
           )
         }
         return fetchList(client, 'popular', p, resultsPerPage)
-      })
-    )
+      }),
+    ),
   )
 }

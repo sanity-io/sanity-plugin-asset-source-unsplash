@@ -27,11 +27,11 @@ export default function Photo(props: Props) {
     (event: any) => {
       event.stopPropagation()
       const url = `${data.links.html}?utm_source=${encodeURIComponent(
-        UTM_SOURCE
+        UTM_SOURCE,
       )}&utm_medium=referral`
       window.open(url, data.id, 'noreferrer,noopener')
     },
-    [data]
+    [data],
   )
 
   const handleKeyDown = useCallback(
@@ -41,7 +41,7 @@ export default function Photo(props: Props) {
         onClick(data)
       }
     },
-    [onKeyDown, data, onClick]
+    [onKeyDown, data, onClick],
   )
 
   const handleMouseDown = useCallback(() => {

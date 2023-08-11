@@ -54,7 +54,7 @@ class UnsplashAssetSourceInternal extends React.Component<
       this.props.client,
       this.searchSubject$,
       this.pageSubject$,
-      RESULTS_PER_PAGE
+      RESULTS_PER_PAGE,
     ).subscribe({
       next: (results: UnsplashPhoto[]) => {
         this.setState((prev) => ({
