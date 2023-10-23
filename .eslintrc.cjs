@@ -7,7 +7,6 @@ module.exports = {
     },
   },
   extends: [
-    'react-app',
     'sanity/react', // must come before sanity/typescript
     'sanity/typescript',
     'plugin:react-hooks/recommended',

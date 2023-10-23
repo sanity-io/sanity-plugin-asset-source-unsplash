@@ -1,11 +1,5 @@
-import { Card, Theme } from '@sanity/ui'
+import { Card } from '@sanity/ui'
 import styled from 'styled-components'
-
-type SanityTheme = Theme['sanity']
-
-interface Style {
-  studioTheme: SanityTheme
-}
 
 export const Root = styled.div`
   overflow: hidden;
@@ -15,7 +9,7 @@ export const Root = styled.div`
   background-size: cover;
   position: relative;
   outline: none !important;
-  border: ${({ studioTheme }: Style) => `1px solid ${studioTheme.color.card.enabled.border}`};
+  border: ${({ theme }) => `1px solid ${theme.sanity.color.card.enabled.border}`};
   box-sizing: content-box;
   user-drag: none;
 

@@ -1,5 +1,5 @@
-import { Text, useTheme } from '@sanity/ui'
-import React, { useCallback, useEffect } from 'react'
+import { Text } from '@sanity/ui'
+import { useCallback, useEffect } from 'react'
 
 import { UnsplashPhoto } from '../types'
 import { CreditLine, CreditLineLink, Root } from './Photo.styled'
@@ -57,10 +57,8 @@ export default function Photo(props: Props) {
   const src = data.urls.small
   const userName = data.user.name
 
-  const theme = useTheme().sanity
   return (
     <Root
-      studioTheme={theme}
       title={`Select image by ${userName} from Unsplash`}
       tabIndex={0}
       onKeyDown={handleKeyDown}
