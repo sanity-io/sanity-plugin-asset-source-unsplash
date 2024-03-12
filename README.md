@@ -7,7 +7,8 @@
 
 Search for photos on Unsplash and add them to your project right inside Sanity Studio.
 
-![Unsplash image selector](assets/unsplash-selector.png)
+![Unsplash image selector](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/assets/81981/d5550f69-7bb3-40a3-8822-95486fad8749)
+
 
 ## Installation
 
