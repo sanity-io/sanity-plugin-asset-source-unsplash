@@ -26,11 +26,8 @@
     ".": {
       "types": "./lib/index.d.ts",
       "source": "./src/index.ts",
-      "require": "./lib/index.cjs",
-      "node": {
-        "import": "./lib/index.cjs.js"
-      },
       "import": "./lib/index.js",
+      "require": "./lib/index.cjs",
       "default": "./lib/index.js"
     },
     "./package.json": "./package.json"
@@ -57,6 +54,7 @@
     "type-check": "tsc --noEmit",
     "watch": "pkg-utils watch --strict"
   },
+  "browserslist": "extends @sanity/browserslist-config",
   "dependencies": {
     "@sanity/incompatible-plugin": "^1.0.0",
     "@sanity/ui": "^1.0.0",

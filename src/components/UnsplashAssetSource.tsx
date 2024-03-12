@@ -1,13 +1,17 @@
-import { SanityClient } from '@sanity/client'
 import { Card, Dialog, Flex, Spinner, Stack, Text, TextInput } from '@sanity/ui'
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import PhotoAlbum from 'react-photo-album'
-import { BehaviorSubject, Subscription } from 'rxjs'
-import { AssetFromSource, AssetSourceComponentProps, useClient } from 'sanity'
+import { BehaviorSubject, type Subscription } from 'rxjs'
+import {
+  type AssetFromSource,
+  type AssetSourceComponentProps,
+  type SanityClient,
+  useClient,
+} from 'sanity'
 
 import { fetchDownloadUrl, search } from '../datastores/unsplash'
-import { UnsplashPhoto } from '../types'
+import type { UnsplashPhoto } from '../types'
 import Photo from './Photo'
 import { Search } from './UnsplashAssetSource.styled'
 
@@ -87,6 +91,7 @@ class UnsplashAssetSourceInternal extends React.Component<
           },
           description,
           creditLine: `${photo.user.name} by Unsplash`,
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } as any,
       }
       this.props.onSelect([asset])
@@ -112,6 +117,7 @@ class UnsplashAssetSourceInternal extends React.Component<
     this.searchSubject$.next(this.state.query)
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   handleKeyDown = (event: any) => {
     const { cursor } = this.state
     if ((event.keyCode === 38 || event.keyCode === 37) && cursor > 0) {
@@ -137,6 +143,7 @@ class UnsplashAssetSourceInternal extends React.Component<
     this.setState({ cursor: index })
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   renderImage = (props: any) => {
     const { photo, layout } = props
     const active =
@@ -214,7 +221,7 @@ class UnsplashAssetSourceInternal extends React.Component<
                   padding={PHOTO_PADDING}
                   targetRowHeight={(width) => {
                     if (width < 300) return 150
-                    else if (width < 600) return 200
+                    if (width < 600) return 200
                     return 300
                   }}
                   photos={photos.map((photo: UnsplashPhoto) => ({

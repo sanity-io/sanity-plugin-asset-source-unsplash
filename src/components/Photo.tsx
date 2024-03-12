@@ -1,7 +1,7 @@
 import { Text } from '@sanity/ui'
 import { useCallback, useEffect } from 'react'
 
-import { UnsplashPhoto } from '../types'
+import type { UnsplashPhoto } from '../types'
 import { CreditLine, CreditLineLink, Root } from './Photo.styled'
 
 type Props = {
@@ -9,6 +9,7 @@ type Props = {
   width: number
   height: number
   onClick: (photo: UnsplashPhoto) => void
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onKeyDown: (event: any) => void
   active: boolean
   onFocus: (photo: UnsplashPhoto) => void
@@ -24,6 +25,7 @@ export default function Photo(props: Props) {
   }, [onClick, data])
 
   const handleCreditLineClicked = useCallback(
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (event: any) => {
       event.stopPropagation()
       const url = `${data.links.html}?utm_source=${encodeURIComponent(
@@ -35,6 +37,7 @@ export default function Photo(props: Props) {
   )
 
   const handleKeyDown = useCallback(
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (event: any) => {
       onKeyDown(event)
       if (event.keyCode === 13) {

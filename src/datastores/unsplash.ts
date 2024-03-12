@@ -1,8 +1,8 @@
-import { SanityClient } from '@sanity/client'
-import { BehaviorSubject, concat, defer, Observable } from 'rxjs'
+import { type BehaviorSubject, concat, defer, type Observable } from 'rxjs'
 import { debounceTime, distinctUntilChanged, map, switchMap, withLatestFrom } from 'rxjs/operators'
+import type { SanityClient } from 'sanity'
 
-import { UnsplashPhoto } from '../types'
+import type { UnsplashPhoto } from '../types'
 
 type SearchSubject = BehaviorSubject<string>
 type PageSubject = BehaviorSubject<number>
@@ -12,6 +12,7 @@ const fetchSearch = (
   query: string,
   page: number,
   perPage: number,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
 ): Observable<any> =>
   defer(
     () =>
@@ -21,6 +22,7 @@ const fetchSearch = (
         )}&page=${page}&per_page=${perPage}`,
         withCredentials: true,
         method: 'GET',
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
       }) as any,
   )
 
@@ -29,6 +31,7 @@ const fetchList = (
   type: string,
   page: number,
   perPage: number,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
 ): Observable<any> =>
   defer(
     () =>
@@ -36,6 +39,7 @@ const fetchList = (
         url: `/addons/unsplash/photos?order_by=${type}&page=${page}&per_page=${perPage}`,
         withCredentials: true,
         method: 'GET',
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
       }) as any,
   )
 
@@ -60,6 +64,7 @@ export const search = (
   query: SearchSubject,
   page: PageSubject,
   resultsPerPage: number,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
 ): Observable<any> => {
   return concat(
     query.pipe(
