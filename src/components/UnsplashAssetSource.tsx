@@ -167,6 +167,7 @@ class UnsplashAssetSourceInternal extends React.Component<
 
     return (
       <Dialog
+        animate
         id="unsplash-asset-source"
         header="Select image from Unsplash"
         onClose={this.handleClose}
