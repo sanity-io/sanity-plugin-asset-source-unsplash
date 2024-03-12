@@ -5,6 +5,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.1](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/compare/v2.0.0...v2.0.1) (2024-03-12)
+
+### Bug Fixes
+
+- improve UX of search input ([5ac85fd](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/commit/5ac85fd06b5ce968c9ca1a09c0da283fd8d926b8))
+
 ## [2.0.0](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/compare/v1.1.2...v2.0.0) (2024-03-12)
 
 ### ⚠ BREAKING CHANGES
