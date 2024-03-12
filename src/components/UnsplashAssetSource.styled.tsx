@@ -1,7 +1,7 @@
-import { Stack } from '@sanity/ui'
+import { TextInput } from '@sanity/ui'
 import styled from 'styled-components'
 
-export const Search = styled(Stack)`
+export const SearchInput = styled(TextInput)`
   position: sticky;
   top: 0;
   z-index: 1;

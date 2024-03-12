@@ -1,4 +1,5 @@
-import { Card, Dialog, Flex, Spinner, Stack, Text, TextInput } from '@sanity/ui'
+import { SearchIcon } from '@sanity/icons'
+import { Dialog, Flex, Spinner, Stack, Text } from '@sanity/ui'
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import PhotoAlbum from 'react-photo-album'
@@ -13,7 +14,7 @@ import {
 import { fetchDownloadUrl, search } from '../datastores/unsplash'
 import type { UnsplashPhoto } from '../types'
 import Photo from './Photo'
-import { Search } from './UnsplashAssetSource.styled'
+import { SearchInput } from './UnsplashAssetSource.styled'
 
 type State = {
   query: string
@@ -109,6 +110,12 @@ class UnsplashAssetSourceInternal extends React.Component<
     this.searchSubject$.next(query)
   }
 
+  handleSearchTermCleared = () => {
+    this.setState({ query: '', page: 1, searchResults: [[]], isLoading: true, cursor: 0 })
+    this.pageSubject$.next(1)
+    this.searchSubject$.next('')
+  }
+
   handleScollerLoadMore = () => {
     // eslint-disable-next-line react/no-access-state-in-setstate
     const nextPage = this.state.page + 1
@@ -174,20 +181,15 @@ class UnsplashAssetSourceInternal extends React.Component<
         open
         width={4}
       >
-        <Stack space={3} padding={4}>
-          <Card>
-            <Search space={3}>
-              <Text size={1} weight="semibold">
-                Search Unsplash
-              </Text>
-              <TextInput
-                label="Search Unsplash.com"
-                placeholder="Topics or colors"
-                value={query}
-                onChange={this.handleSearchTermChanged}
-              />
-            </Search>
-          </Card>
+        <Stack space={3} paddingX={4} paddingBottom={4}>
+          <SearchInput
+            clearButton={query.length > 0}
+            icon={SearchIcon}
+            onChange={this.handleSearchTermChanged}
+            onClear={this.handleSearchTermCleared}
+            placeholder="Search by topics or colors"
+            value={query}
+          />
           {!isLoading && this.getPhotos().length === 0 && (
             <Text size={1} muted>
               No results found

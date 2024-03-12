@@ -1,6 +1,6 @@
 {
   "name": "sanity-plugin-asset-source-unsplash",
-  "version": "2.0.0",
+  "version": "2.0.1-canary.1",
   "description": "Use images from Unsplash.com in your Sanity Studio",
   "keywords": [
     "sanity",
@@ -56,6 +56,7 @@
   },
   "browserslist": "extends @sanity/browserslist-config",
   "dependencies": {
+    "@sanity/icons": "^2.11.2",
     "@sanity/incompatible-plugin": "^1.0.0",
     "@sanity/ui": "^2.0.9",
     "react-infinite-scroll-component": "6.1.0",
