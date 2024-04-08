@@ -1,5 +1,5 @@
 import { TextInput } from '@sanity/ui'
-import {styled} from 'styled-components'
+import { styled } from 'styled-components'
 
 export const SearchInput = styled(TextInput)`
   position: sticky;
