@@ -55,12 +55,12 @@
   },
   "browserslist": "extends @sanity/browserslist-config",
   "dependencies": {
-    "@sanity/icons": "^2.11.2",
-    "@sanity/incompatible-plugin": "^1.0.0",
-    "@sanity/ui": "^2.0.9",
+    "@sanity/icons": "^2.11.7",
+    "@sanity/incompatible-plugin": "^1.0.4",
+    "@sanity/ui": "^2.1.0",
     "react-infinite-scroll-component": "6.1.0",
     "react-photo-album": "2.3.1",
-    "rxjs": "^7.0.0"
+    "rxjs": "^7.8.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.2.1",
@@ -92,7 +92,7 @@
     "sanity": "^3.36.4",
     "semantic-release": "^23.0.7",
     "styled-components": "^6.1.8",
-    "typescript": "^5.4.2"
+    "typescript": "5.4.2"
   },
   "peerDependencies": {
     "react": "^18",
