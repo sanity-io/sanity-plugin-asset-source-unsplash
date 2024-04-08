@@ -5,6 +5,16 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.0](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/compare/v2.0.1...v3.0.0) (2024-04-08)
+
+### ⚠ BREAKING CHANGES
+
+- require `styled-components` v6 (#138)
+
+### Bug Fixes
+
+- require `styled-components` v6 ([#138](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/issues/138)) ([044a74d](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/commit/044a74da6cc5a7683f0e8a8eb48eae45bc424a8e))
+
 ## [2.0.1](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/compare/v2.0.0...v2.0.1) (2024-03-12)
 
 ### Bug Fixes
