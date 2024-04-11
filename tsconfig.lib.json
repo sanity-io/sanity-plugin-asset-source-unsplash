@@ -7,10 +7,4 @@
     "./src/**/*.test.ts",
     "./src/**/*.test.tsx"
   ],
-  "compilerOptions": {
-    "rootDir": ".",
-    "outDir": "./lib",
-    "jsx": "react-jsx",
-    "emitDeclarationOnly": true
-  }
 }

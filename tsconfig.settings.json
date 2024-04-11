@@ -1,8 +1,11 @@
 {
   "compilerOptions": {
-    "moduleResolution": "node",
+    "rootDir": ".",
+    "outDir": "./lib",
+
     "target": "esnext",
-    "module": "esnext",
+    "jsx": "preserve",
+    "module": "preserve",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "esModuleInterop": true,
     "strict": true,
@@ -13,6 +16,7 @@
     "isolatedModules": true,
     "allowJs": true,
     "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
 
     "resolveJsonModule": true
   }
