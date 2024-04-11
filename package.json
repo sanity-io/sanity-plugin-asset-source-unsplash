@@ -65,7 +65,7 @@
   "devDependencies": {
     "@commitlint/cli": "^19.2.1",
     "@commitlint/config-conventional": "^19.1.0",
-    "@sanity/pkg-utils": "^5.1.12",
+    "@sanity/pkg-utils": "^6.5.0",
     "@sanity/plugin-kit": "^3.1.12",
     "@sanity/semantic-release-preset": "^4.1.7",
     "@types/node": "^18.18.6",
