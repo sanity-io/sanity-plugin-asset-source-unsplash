@@ -5,6 +5,13 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.2](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/compare/v3.0.1...v3.0.2) (2024-12-18)
+
+### Bug Fixes
+
+- allow react 19 ([a0ce51f](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/commit/a0ce51f68185730932aecb3cb59ec58e29490a16))
+- **deps:** Update dependency @sanity/icons to v3 ([#154](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/issues/154)) ([b9b8161](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/commit/b9b8161dab78497134f5fd14ee930197611e8d17))
+
 ## [3.0.1](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/compare/v3.0.0...v3.0.1) (2024-04-11)
 
 ### Bug Fixes
