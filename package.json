@@ -57,7 +57,7 @@
     "@sanity/incompatible-plugin": "^1.0.4",
     "@sanity/ui": "^2.1.2",
     "react-infinite-scroll-component": "6.1.0",
-    "react-photo-album": "2.3.1",
+    "react-photo-album": "3.0.2",
     "rxjs": "^7.8.1"
   },
   "devDependencies": {
