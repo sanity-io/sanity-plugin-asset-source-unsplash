@@ -1,4 +1,4 @@
-import { AssetSource, definePlugin } from 'sanity'
+import { type AssetSource, definePlugin } from 'sanity'
 
 import Icon from './components/Icon'
 import Unsplash from './components/UnsplashAssetSource'

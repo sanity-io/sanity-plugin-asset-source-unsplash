@@ -11,7 +11,7 @@ export const Root = styled.div`
   outline: none !important;
   border: ${({ theme }) => `1px solid ${theme.sanity.color.card.enabled.border}`};
   box-sizing: content-box;
-  user-drag: none;
+  -webkit-user-drag: none;
 
   &:hover {
     opacity: 0.85;
@@ -34,7 +34,7 @@ export const CreditLine = styled(Card)`
      --creditline-fg: ${theme.sanity.color.card.enabled.fg};
      --creditline-bg: ${theme.sanity.color.card.enabled.bg};
    `};
-  user-drag: none;
+  -webkit-user-drag: none;
   position: absolute;
   background-color: var(--creditline-bg);
   bottom: 0;

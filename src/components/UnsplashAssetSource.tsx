@@ -41,7 +41,7 @@ class UnsplashAssetSourceInternal extends React.Component<
     selectedAssets: undefined,
   }
 
-  state = {
+  override state = {
     cursor: 0,
     query: '',
     page: 1,
@@ -54,7 +54,7 @@ class UnsplashAssetSourceInternal extends React.Component<
   searchSubject$ = new BehaviorSubject('')
   pageSubject$ = new BehaviorSubject(1)
 
-  componentDidMount() {
+  override componentDidMount() {
     this.searchSubscription = search(
       this.props.client,
       this.searchSubject$,
@@ -70,7 +70,7 @@ class UnsplashAssetSourceInternal extends React.Component<
     })
   }
 
-  componentWillUnmount() {
+  override componentWillUnmount() {
     if (this.searchSubscription) {
       this.searchSubscription.unsubscribe()
     }
@@ -169,7 +169,7 @@ class UnsplashAssetSourceInternal extends React.Component<
     )
   }
 
-  render() {
+  override render() {
     const { query, searchResults, isLoading } = this.state
 
     return (
