@@ -5,6 +5,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.3](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/compare/v3.0.2...v3.0.3) (2025-01-28)
+
+### Bug Fixes
+
+- improve react 19 typings ([7b87db1](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/commit/7b87db1637b26ce71cc591df121f86ce63099a66))
+
 ## [3.0.2](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/compare/v3.0.1...v3.0.2) (2024-12-18)
 
 ### Bug Fixes
