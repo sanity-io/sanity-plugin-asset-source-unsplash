@@ -5,6 +5,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.4](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/compare/v3.0.3...v3.0.4) (2025-07-10)
+
+### Bug Fixes
+
+- **deps:** allow studio v4 peer dep ranges ([f2ebd6a](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/commit/f2ebd6a7591e5efeca68278eaaf75917c07967f2))
+
 ## [3.0.3](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/compare/v3.0.2...v3.0.3) (2025-01-28)
 
 ### Bug Fixes
