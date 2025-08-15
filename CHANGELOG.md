@@ -5,6 +5,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.1](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/compare/v4.0.0...v4.0.1) (2025-08-15)
+
+### Bug Fixes
+
+- export unsplash icon ([0defa1a](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/commit/0defa1a35e99eb23573b842a2066123bb0ea4810))
+
 ## [4.0.0](https://github.com/sanity-io/sanity-plugin-asset-source-unsplash/compare/v3.1.0...v4.0.0) (2025-08-15)
 
 ### ⚠ BREAKING CHANGES
