@@ -25,20 +25,15 @@
   "exports": {
     ".": {
       "source": "./src/index.ts",
-      "import": "./lib/index.js",
-      "require": "./lib/index.cjs",
       "default": "./lib/index.js"
     },
     "./package.json": "./package.json"
   },
-  "main": "./lib/index.cjs",
-  "module": "./lib/index.js",
+  "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "files": [
     "src",
-    "lib",
-    "sanity.json",
-    "v2-incompatible.js"
+    "lib"
   ],
   "scripts": {
     "build": "plugin-kit verify-package --silent && pkg-utils build --strict --check --clean",
@@ -54,8 +49,7 @@
   "browserslist": "extends @sanity/browserslist-config",
   "dependencies": {
     "@sanity/icons": "^3.7.4",
-    "@sanity/incompatible-plugin": "^1.0.5",
-    "@sanity/ui": "^3.0.3",
+    "@sanity/ui": "^3.0.7",
     "react-infinite-scroll-component": "6.1.0",
     "react-photo-album": "2.4.1",
     "rxjs": "^7.8.2"
@@ -63,11 +57,11 @@
   "devDependencies": {
     "@commitlint/cli": "^19.6.1",
     "@commitlint/config-conventional": "^19.6.0",
-    "@sanity/pkg-utils": "^7.9.14",
+    "@sanity/pkg-utils": "^7.11.9",
     "@sanity/plugin-kit": "4.0.19",
     "@sanity/semantic-release-preset": "^4.1.8",
     "@types/node": "^18.18.6",
-    "@types/react": "^19.1.9",
+    "@types/react": "^19.1.10",
     "@types/react-dom": "^19.1.7",
     "@typescript-eslint/eslint-plugin": "^8.22.0",
     "@typescript-eslint/parser": "^8.22.0",
@@ -81,25 +75,32 @@
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "husky": "^8.0.3",
     "lint-staged": "^15.0.2",
-    "prettier": "^3.4.2",
-    "prettier-plugin-packagejson": "^2.5.8",
+    "prettier": "^3.6.2",
+    "prettier-plugin-packagejson": "^2.5.19",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
-    "sanity": "^4.2.0",
+    "sanity": "^4.4.1",
     "semantic-release": "^23.1.1",
     "styled-components": "^6.1.19",
     "typescript": "5.8.3"
   },
   "peerDependencies": {
-    "react": "^18 || ^19",
-    "sanity": "^3 || ^4.0.0-0",
+    "react": "^18.3 || ^19",
+    "react-dom": "^18.3 || ^19",
+    "sanity": "^4",
     "styled-components": "^6.1"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=20.19 <22 || >=22.12"
   },
   "publishConfig": {
     "access": "public"
   },
-  "sanityExchangeUrl": "https://www.sanity.io/plugins/sanity-plugin-asset-source-unsplash"
+  "sanityExchangeUrl": "https://www.sanity.io/plugins/sanity-plugin-asset-source-unsplash",
+  "sanityPlugin": {
+    "verifyPackage": {
+      "nodeEngine": false,
+      "sanityV2Json": false
+    }
+  }
 }
