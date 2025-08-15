@@ -1,6 +1,6 @@
 import { type AssetSource, definePlugin } from 'sanity'
 
-import Icon from './components/Icon'
+import { UnsplashIcon } from './components/Icon'
 import Unsplash from './components/UnsplashAssetSource'
 
 export type { Asset, AssetDocument, UnsplashPhoto } from './types'
@@ -12,7 +12,7 @@ export const unsplashAssetSource: AssetSource = {
   name: 'unsplash',
   title: 'Unsplash',
   component: Unsplash,
-  icon: Icon,
+  icon: UnsplashIcon,
 }
 
 /**
@@ -30,4 +30,4 @@ export const unsplashImageAsset = definePlugin({
   },
 })
 
-export { Icon as UnsplashIcon }
+export { UnsplashIcon }

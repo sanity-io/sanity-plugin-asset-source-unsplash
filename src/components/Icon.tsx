@@ -1,4 +1,7 @@
-export default function UnsplashIcon() {
+/**
+ * @public
+ */
+export function UnsplashIcon() {
   return (
     <svg role="img" viewBox="0 0 25 25" width="1em" height="1em" fill="currentColor">
       <title />
