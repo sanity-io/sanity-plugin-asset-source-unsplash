@@ -29,3 +29,5 @@ export const unsplashImageAsset = definePlugin({
     },
   },
 })
+
+export { Icon as UnsplashIcon }
